@@ -3,12 +3,13 @@ const config = require('../otp/config')
 const client = require('twilio')(config.accountSID, config.authToken)
 const {generateToken} = require('../helpers/jwt')
 
+
 class UserControllers {
     static async register(req, res, next) {
-        let {phone, nik, name, email} = req.body
+        let {phone, nik, name, email, deviceId} = req.body
         try {
             const user = await User.create({
-                phone, nik, name, email, status: 'negative'
+                phone, nik, name, email, status: 'negative', deviceId
             })
             res.status(201).json({
                 message: 'Register new user success',
@@ -37,12 +38,14 @@ class UserControllers {
                 res.status(200).json({sendOtp})
             }
         } catch(err) {
+            console.log(err)
             next(err)
         }
     }
     static async verify(req, res, next) {
         let {phone, code} = req.body
         try {
+            const user = await User.findOne({where: {phone}})
             const verifyOtp = await client
                 .verify
                 .services(config.serviceID)
@@ -55,15 +58,22 @@ class UserControllers {
                 throw {name: 'INVALID_OTP'}
             } else {
                 let payload = {
+                    id: user.id,
                     phone
                 }
                 let token = generateToken(payload)
                 res.status(200).json({
                     message: 'Thanks, Login Success!',
-                    token
+                    token,
+                    id: user.id,
+                    phone,
+                    nik: user.nik,
+                    name: user.name,
+                    deviceId: user.deviceId
                 })
             }
         } catch(err) {
+            console.log(err)
             next(err)
         }
     }
