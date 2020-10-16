@@ -2,7 +2,7 @@
 const {
   Model
 } = require('sequelize');
-const {hashData} = require('../helpers/bcrypt')
+// const {hashData} = require('../helpers/bcrypt')
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -90,13 +90,26 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'Status is Required'
         }
       } 
+    },
+    deviceId: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'Device Id is Required'
+        },
+        notEmpty: {
+          args: true,
+          msg: 'deviceId is Required'
+        }
+      }
     }
   }, {
     sequelize,
     modelName: 'User',
   });
-  User.addHook('beforeCreate', (user, opt) => {
-    user.nik = hashData(user.nik)
-  })
+  // User.addHook('beforeCreate', (user, opt) => {
+  //   user.nik = hashData(user.nik)
+  // })
   return User;
 };
