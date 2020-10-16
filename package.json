@@ -1,0 +1,36 @@
+{
+  "name": "c-tracker-SERVER",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SARScovid19-tracker/c-tracker-SERVER.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SARScovid19-tracker/c-tracker-SERVER/issues"
+  },
+  "homepage": "https://github.com/SARScovid19-tracker/c-tracker-SERVER#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.4.1",
+    "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0",
+    "twilio": "^3.50.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
