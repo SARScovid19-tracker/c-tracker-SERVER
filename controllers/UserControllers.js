@@ -61,10 +61,10 @@ class UserControllers {
             next(err)
         }
     }
-    static activateAccount(req, res, next) {
+    static async activateAccount(req, res, next) {
         const {token} = req.query
         const decode = verifyToken(token)
-        const user = User.update({
+        const user = await User.update({
             isEmailVerify: true
         }, {
             where: {
