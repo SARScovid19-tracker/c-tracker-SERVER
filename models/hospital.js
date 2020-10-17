@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
   Hospital.init({
     name: DataTypes.STRING,
     email: DataTypes.STRING,
-    address: DataTypes.STRING
+    address: DataTypes.STRING,
+    password: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Hospital',

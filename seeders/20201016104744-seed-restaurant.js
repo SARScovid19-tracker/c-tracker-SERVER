@@ -1,4 +1,5 @@
 'use strict';
+const fs = require('fs')
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -11,6 +12,12 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
+   let restaurants = JSON.parse(fs.readFileSync('./seeders/json-source/restaurant.json'))
+   for(let i = 0; i < restaurants.length; i++) {
+     restaurants[i].createdAt = new Date()
+     restaurants[i].updatedAt = new Date()
+   }
+   await queryInterface.bulkInsert('Restaurants', restaurants, {})
   },
 
   down: async (queryInterface, Sequelize) => {
@@ -20,5 +27,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
+    await queryInterface.bulkDelete('Restaurants', null, {})
   }
 };

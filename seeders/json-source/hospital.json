@@ -1,17 +1,20 @@
 [
     {
         "name": "RS Mitra Kerja",
-        "email": "mitrakerja.management@yahoo.com",
-        "address": "Bogor, Jawa Barat"
+        "email": "rsmitrakerja.admin@yahoo.com",
+        "address": "Bogor, Jawa Barat",
+        "password": "12345678"
     },
     {
         "name": "RS Sikomoan",
-        "email": "sikomoan.management@yahoo.com",
-        "address": "Denpasar, Bali"
+        "email": "rssikomoan.admin@yahoo.com",
+        "address": "Denpasar, Bali",
+        "password": "12345678"
     },
     {
         "name": "RS Mayaantara",
-        "email": "mayaantara.management@yahoo.com",
-        "address": "Banjarmasin, Kalimantan Selatan"
+        "email": "rsmayaantara.admin@yahoo.com",
+        "address": "Banjarmasin, Kalimantan Selatan",
+        "password": "12345678"
     }
 ]
