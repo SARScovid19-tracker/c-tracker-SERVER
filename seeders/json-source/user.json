@@ -1,0 +1,23 @@
+[
+    {
+        "phone": 62812345678,
+        "nik": 123456,
+        "name": "Budi",
+        "email": "budi@gmail.com",
+        "status": "Waiting"
+    },
+    {
+        "phone": 62812387699,
+        "nik": 123456,
+        "name": "Rifky",
+        "email": "rifky@gmail.com",
+        "status": "Positive"
+    },
+    {
+        "phone": 62812345699,
+        "nik": 123456,
+        "name": "Wisma",
+        "email": "wisma@gmail.com",
+        "status": "Negative"
+    }
+]

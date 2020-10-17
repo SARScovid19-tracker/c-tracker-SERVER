@@ -1,0 +1,20 @@
+[
+    {
+        "userId": 1,
+        "hospitalId": 1,
+        "testingType": "Swab",
+        "isWaitingResult": true
+    },
+    {
+        "userId": 2,
+        "hospitalId": 2,
+        "testingType": "Rapid",
+        "isWaitingResult": false
+    },
+    {
+        "userId": 3,
+        "hospitalId": 3,
+        "testingType": "Swab",
+        "isWaitingResult": false
+    }
+]
