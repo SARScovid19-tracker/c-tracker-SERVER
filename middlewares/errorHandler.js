@@ -7,12 +7,21 @@ function errorHandler(err, req, res, next) {
         err.errors.forEach(e => {
             errors.push(e.message)
         });
+    } else if(err.name === 'PHONE_NOT_UNIQUE') {
+        statusCode = 400
+        errors.push('Phone Number Already Registered!')
+    } else if(err.name === 'EMAIL_NOT_UNIQUE') {
+        statusCode = 400
+        errors.push('Email Already Registered')
     } else if(err.name === 'LOGIN_FAILED') {
         statusCode = 400
         errors.push('Invalid Phone Number')
     } else if(err.name === 'INVALID_OTP') {
         statusCode = 400
         errors.push('Invalid OTP')
+    } else if(err.name === 'LOGIN_FAILED') {
+        statusCode = 400
+        errors.push('Invalid Email or Password')
     } else {
         errors.push('Internal Server Error')
     }

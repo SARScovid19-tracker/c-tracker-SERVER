@@ -1,8 +1,9 @@
 const router = require('express').Router()
-const UserController = require('../controllers/UserControllers')
+const {UserControllers, routeToken} = require('../controllers/UserControllers')
 
-router.post('/register', UserController.register)
-router.get('/login', UserController.login)
-router.get('/verify', UserController.verify)
+router.post('/register', UserControllers.register)
+router.get('/login', UserControllers.login)
+router.get('/verify', UserControllers.verify)
+router.get(`/authentication/activate`, UserControllers.activateAccount)
 
 module.exports = router

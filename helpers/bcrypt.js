@@ -5,8 +5,8 @@ function hashData(data) {
     return bcrypt.hashSync(data, salt)
 }
 
-function compareHash(number, hash) {
-    return bcrypt.compareSync(number, hash)
+function compareHash(data, hash) {
+    return bcrypt.compareSync(data, hash)
 }
 
 module.exports = {hashData, compareHash}

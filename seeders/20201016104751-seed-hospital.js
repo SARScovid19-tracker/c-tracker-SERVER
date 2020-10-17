@@ -1,4 +1,6 @@
 'use strict';
+const fs = require('fs')
+const {hashData} = require('../helpers/bcrypt')
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -11,6 +13,13 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
+   const hospitals = JSON.parse(fs.readFileSync('./seeders/json-source/hospital.json'))
+   for(let i = 0; i < hospitals.length; i++) {
+     hospitals[i].password = hashData(hospitals[i].password)
+     hospitals[i].createdAt = new Date()
+     hospitals[i].updatedAt = new Date()
+   }
+   await queryInterface.bulkInsert('Hospitals', hospitals, {})
   },
 
   down: async (queryInterface, Sequelize) => {
@@ -20,5 +29,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
+    await queryInterface.bulkDelete('Hospitals', null, {})
   }
 };

@@ -20,7 +20,6 @@ module.exports = (sequelize, DataTypes) => {
     phone: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
       validate: {
         notNull: {
           msg: 'Phone Number is Required'
@@ -29,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
           args: true,
           msg: 'Phone Number is Required'
         }
-      }
+      },
     },
     nik: {
       type: DataTypes.STRING,
@@ -76,7 +75,7 @@ module.exports = (sequelize, DataTypes) => {
           args: true,
           msg: 'Invalid Email Format'
         }
-      } 
+      }
     },
     status: {
       type: DataTypes.STRING,
@@ -101,6 +100,18 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
           args: true,
           msg: 'deviceId is Required'
+        }
+      }
+    },
+    isEmailVerify: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'isEmailVerify is Required'
+        },
+        notEmpty: {
+          msg: 'isEmailVerify is Required'
         }
       }
     }
