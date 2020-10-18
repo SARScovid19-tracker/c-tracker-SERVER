@@ -2,10 +2,10 @@ const {UserHospital, User, Hospital} = require('../models/')
 
 class UserHospitalControllers {
     static async create(req, res, next) {
-        const {userId, hospitalId, testingType, isWaitingResult} = req.body
+        const {userId, hospitalId, testingType} = req.body
         try {
             const addUserHospital = await UserHospital.create({
-                userId, hospitalId, testingType, isWaitingResult
+                userId, hospitalId, testingType, isWaitingResult: true
             })
             res.status(201).json({message: 'Add Hospital History Success', addUserHospital})
         } catch(err) {
