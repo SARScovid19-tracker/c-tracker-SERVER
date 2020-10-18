@@ -16,5 +16,11 @@
         "hospitalId": 3,
         "testingType": "Swab",
         "isWaitingResult": false
+    },
+    {
+        "userId": 3,
+        "hospitalId": 2,
+        "testingType": "Rapid",
+        "isWaitingResult": false
     }
 ]
