@@ -7,6 +7,24 @@
     },
     {
         "userId": 2,
+        "hospitalId": 1,
+        "testingType": "Swab",
+        "isWaitingResult": false
+    },
+    {
+        "userId": 3,
+        "hospitalId": 1,
+        "testingType": "Swab",
+        "isWaitingResult": false
+    },
+    {
+        "userId": 4,
+        "hospitalId": 1,
+        "testingType": "Rapid",
+        "isWaitingResult": false
+    },
+    {
+        "userId": 2,
         "hospitalId": 2,
         "testingType": "Rapid",
         "isWaitingResult": false
