@@ -3,7 +3,6 @@ const config = require('../otp/config')
 const client = require('twilio')(config.accountSID, config.authToken)
 const {generateToken, verifyToken} = require('../helpers/jwt')
 const nodemailer = require('nodemailer')
-const routeToken = ''
 
 
 class UserControllers {
@@ -61,10 +60,10 @@ class UserControllers {
             next(err)
         }
     }
-    static activateAccount(req, res, next) {
+    static async activateAccount(req, res, next) {
         const {token} = req.query
         const decode = verifyToken(token)
-        const user = User.update({
+        const user = await User.update({
             isEmailVerify: true
         }, {
             where: {
@@ -132,4 +131,4 @@ class UserControllers {
     }
 }
 
-module.exports = {UserControllers, routeToken}
+module.exports = UserControllers

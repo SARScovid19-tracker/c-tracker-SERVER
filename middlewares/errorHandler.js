@@ -22,6 +22,9 @@ function errorHandler(err, req, res, next) {
     } else if(err.name === 'LOGIN_FAILED') {
         statusCode = 400
         errors.push('Invalid Email or Password')
+    } else if(err.name === 'DATA_NOT_FOUND') {
+        statusCode = 404
+        errors.push('Data Not Found')
     } else {
         errors.push('Internal Server Error')
     }
