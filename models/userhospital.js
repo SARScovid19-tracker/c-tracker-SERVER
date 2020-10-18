@@ -19,7 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     hospitalId: DataTypes.INTEGER,
     testingType: DataTypes.STRING,
-    isWaitingResult: DataTypes.BOOLEAN
+    isWaitingResult: DataTypes.BOOLEAN,
+    publishedAt: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'UserHospital',

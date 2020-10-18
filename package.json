@@ -27,6 +27,7 @@
     "express": "^4.17.1",
     "ioredis": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
     "nodemailer": "^6.4.14",
     "pg": "^8.4.1",
     "sequelize": "^6.3.5",
@@ -40,5 +41,5 @@
   },
   "jest": {
     "testEnvironment": "node"
-  }  
+  }
 }
