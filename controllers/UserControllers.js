@@ -3,7 +3,6 @@ const config = require('../otp/config')
 const client = require('twilio')(config.accountSID, config.authToken)
 const {generateToken, verifyToken} = require('../helpers/jwt')
 const nodemailer = require('nodemailer')
-const routeToken = ''
 
 
 class UserControllers {
@@ -132,4 +131,4 @@ class UserControllers {
     }
 }
 
-module.exports = {UserControllers, routeToken}
+module.exports = UserControllers

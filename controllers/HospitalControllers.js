@@ -28,6 +28,24 @@ class HospitalControllers {
             next(err)
         }
     }
+
+    static async getById(req, res, next) {
+        const {id} = req.params
+        try {
+            const hospital = await Hospital.findOne({where: {id}})
+            if(!hospital) {
+                throw {name: 'DATA_NOT_FOUND'}
+            } else {
+                res.status(200).json({
+                    name: hospital.name,
+                    email: hospital.email,
+                    address: hospital.address
+                })
+            }
+        } catch(err) {
+            next(err)
+        }
+    }
 }
 
 module.exports = HospitalControllers
