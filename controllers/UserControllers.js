@@ -7,7 +7,7 @@ const nodemailer = require('nodemailer')
 
 class UserControllers {
     static async register(req, res, next) {
-        let {phone, nik, name, email, deviceId} = req.body
+        let {phone, nik, name, email} = req.body
         try {
             const uniqueValidationPhone = await User.findOne({where: {phone}})
             if(uniqueValidationPhone) {
@@ -18,10 +18,10 @@ class UserControllers {
                     throw {name: 'EMAIL_NOT_UNIQUE'}
                 } else {
                     const user = await User.create({
-                        phone, nik, name, email, status: 'negative', deviceId, isEmailVerify: false
+                        phone, nik, name, email, status: 'negative', isEmailVerify: false
                     })
                     const payload = {
-                        phone, nik, name, email, deviceId
+                        phone, nik, name, email
                     }
                     const token = generateToken(payload)
                     let transporter = nodemailer.createTransport({
@@ -73,21 +73,28 @@ class UserControllers {
         res.status(200).send('Activation account successfully, you can close this page')
     }
     static async login(req, res, next) {
-        let {phone} = req.body
+        let {phone, deviceId} = req.body
         try {
             const user = await User.findOne({where:{phone}})
             if(!user) {
                 throw {name: 'LOGIN_FAILED'}
             } else {
-                const sendOtp = await client
-                    .verify
-                    .services(config.serviceID)
-                    .verifications
-                    .create({
-                        to: phone,
-                        channel: 'sms'
+                if(user.deviceId) {
+                    throw {name: 'LOGOUT_FIRST'}
+                } else {
+                    const addDeviceId = await user.update({
+                        deviceId: deviceId
                     })
-                res.status(200).json({message: 'Send OTP success..', sendOtp})
+                    const sendOtp = await client
+                        .verify
+                        .services(config.serviceID)
+                        .verifications
+                        .create({
+                            to: phone,
+                            channel: 'sms'
+                        })
+                    res.status(200).json({message: 'Send OTP success..', sendOtp})
+                }
             }
         } catch(err) {
             console.log(err)
@@ -124,6 +131,21 @@ class UserControllers {
                     deviceId: user.deviceId
                 })
             }
+        } catch(err) {
+            next(err)
+        }
+    }
+    static async logout(req, res, next) {
+        let {phone} = req.body
+        try {
+            const removeDeviceId = await User.update({
+                deviceId: null
+            }, {
+                where: {
+                    phone
+                }
+            })
+            res.status(200).json({message: 'Logout Success'})
         } catch(err) {
             console.log(err)
             next(err)
