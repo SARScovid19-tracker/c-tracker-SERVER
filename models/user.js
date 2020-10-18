@@ -91,17 +91,7 @@ module.exports = (sequelize, DataTypes) => {
       } 
     },
     deviceId: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: 'Device Id is Required'
-        },
-        notEmpty: {
-          args: true,
-          msg: 'deviceId is Required'
-        }
-      }
+      type: DataTypes.TEXT
     },
     isEmailVerify: {
       type: DataTypes.BOOLEAN,

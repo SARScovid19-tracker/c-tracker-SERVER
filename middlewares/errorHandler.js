@@ -25,6 +25,9 @@ function errorHandler(err, req, res, next) {
     } else if(err.name === 'DATA_NOT_FOUND') {
         statusCode = 404
         errors.push('Data Not Found')
+    } else if(err.name === 'LOGOUT_FIRST') {
+        statusCode = 400
+        errors.push('Please logout first on the previous device')
     } else {
         errors.push('Internal Server Error')
     }
