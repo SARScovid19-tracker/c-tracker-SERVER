@@ -20,7 +20,8 @@ class HospitalControllers {
                         name: data.name
                     }
                     const token = generateToken(payload)
-                    res.status(200).json({message: 'Login Success', token})
+                    res.status(200).json({message: 'Login Success', token,
+                    hospitalId: data.id})
                 }
             }
         } catch(err) {
