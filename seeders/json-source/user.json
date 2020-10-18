@@ -22,5 +22,13 @@
         "email": "wisma@gmail.com",
         "status": "Negative",
         "isEmailVerify": true
+    },
+    {
+        "phone": 62812345610,
+        "nik": 123456,
+        "name": "Satriko",
+        "email": "satriko@gmail.com",
+        "status": "Negative",
+        "isEmailVerify": true
     }
 ]
