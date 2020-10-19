@@ -86,12 +86,12 @@ class HospitalControllers {
                 const output = await Promise.all(
                     restaurantList.map(userList)
                 )
-                // output.forEach(async data => {
-                //     if(data.length !== 0) {
-                //         await devId.push(`ExponentPushToken[${data[0].User.name}]`)
-                //     }
-                // })
-                res.status(200).json({message: 'Success Send Notification', output})
+                let devId = []
+                output[0].forEach(data => {
+                        devId.push(`ExponentPushToken[${data.User.name}]`)
+                })
+                res.status(200).json({message: 'Success Send Notification', devId})
+                return output
             }
         } catch(err) {
             console.log(err)
