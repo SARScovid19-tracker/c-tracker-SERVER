@@ -3,6 +3,7 @@ const {compareHash} = require('../helpers/bcrypt')
 const {generateToken} = require('../helpers/jwt')
 const { Op } = require('sequelize')
 const moment = require('moment')
+const sendPushNotification = require('../helpers/notification')
 
 class HospitalControllers {
     static async login(req, res, next) {

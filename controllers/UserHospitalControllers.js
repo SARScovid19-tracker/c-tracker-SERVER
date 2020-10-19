@@ -31,8 +31,9 @@ class UserHospitalControllers {
         try {
             const data = await UserHospital.findAll({
                 include: [User],
-                attributes: ['id', 'userId', 'testingType', 'hospitalId', 'createdAt', 'publishedAt'],
-                where: {hospitalId}
+                attributes: ['id', 'userId', 'testingType', 'hospitalId', 'createdAt', 'publishedAt', 'isWaitingResult'],
+                where: {hospitalId},
+                order: [['createdAt', 'DESC']]
             })
             res.status(200).json({data})
         } catch(err) {
