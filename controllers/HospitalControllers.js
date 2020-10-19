@@ -93,7 +93,7 @@ class HospitalControllers {
                         devId.push(`ExponentPushToken[${data[0].User.deviceId}]`)
                     }
                 })
-                sendPushNotification(devId)
+                // sendPushNotification(devId)
                 res.status(200).json({message: 'Success Send Notification'})
             }
         } catch(err) {
