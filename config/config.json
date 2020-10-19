@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "postgres",
-    "password": "satriko209",
+    "password": "postgres",
     "database": "c-tracker",
     "host": "localhost",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
-    "password": "satriko209",
+    "password": "postgres",
     "database": "c-tracker",
     "host": "localhost",
     "dialect": "postgres",
