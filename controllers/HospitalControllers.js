@@ -57,7 +57,7 @@ class HospitalControllers {
                 isWaitingResult: false,
                 publishedAt: new Date()
             }, {where: {userId, hospitalId, id: historyId}})
-            if(status === 'negative') {
+            if(status === 'Negative') {
                 res.status(200).json({message: 'Update Success..'})
             } else {
                 const restaurantList = await UserRestaurant.findAll({
