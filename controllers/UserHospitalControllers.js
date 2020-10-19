@@ -17,7 +17,7 @@ class UserHospitalControllers {
         try {
             const history = await UserHospital.findAll({
                 include: [Hospital],
-                attributes: ['id', 'userId', 'hospitalId', 'isWaitingResult', 'publishedAt', 'createdAt'],
+                attributes: ['id', 'userId', 'hospitalId', 'testingType', 'isWaitingResult', 'createdAt', 'updatedAt', 'publishedAt'],
                 where: {userId}
             })
             res.status(200).json({history})
@@ -30,7 +30,7 @@ class UserHospitalControllers {
         try {
             const data = await UserHospital.findAll({
                 include: [User],
-                attributes: ['id', 'userId', 'testingType', 'hospitalId', 'createdAt', 'publishedAt'],
+                attributes: ['id', 'userId', 'testingType', 'hospitalId', 'createdAt', 'publishedAt', 'isWaitingResult'],
                 where: {hospitalId}
             })
             res.status(200).json({data})

@@ -1,15 +1,15 @@
 [
     {
-        "phone": 62812345678,
+        "phone": "+62812345678",
         "nik": 123456,
         "name": "Budi",
         "email": "budi@gmail.com",
-        "status": "Waiting",
+        "status": "Negative",
         "isEmailVerify": true,
         "deviceId": "fdsafsd12sdk343"
     },
     {
-        "phone": 62812387699,
+        "phone": "+62812387699",
         "nik": 123456,
         "name": "Rifky",
         "email": "rifky@gmail.com",
@@ -18,7 +18,7 @@
         "deviceId": "fdsafrtg2sdk343"
     },
     {
-        "phone": 62812345699,
+        "phone": "+62812345699",
         "nik": 123456,
         "name": "Wisma",
         "email": "wisma@gmail.com",
@@ -27,7 +27,7 @@
         "deviceId": "fdsafsd12loi343"
     },
     {
-        "phone": 62812345610,
+        "phone": "+62812345610",
         "nik": 123456,
         "name": "Satriko",
         "email": "satriko@gmail.com",
