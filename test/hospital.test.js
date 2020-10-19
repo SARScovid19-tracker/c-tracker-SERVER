@@ -49,30 +49,45 @@ afterAll(async function(done) {
 })
 
 describe('Get lists of attended hospital for COVID-19 testing by specific user / SUCCESS CASE', () => {
-    test('Should get object with keys: name, email, address', (done) => {
+    test('Should get object with at least following keys: hospitalId, userId, id, isWaitingResult', (done) => {
         request(app)
             .get(`/history/hospitals/${userId}`)
             .end(function(err, res) {
                 if(err) throw err
                 expect(res.status).toBe(200)
+                expect(res.body).toHaveProperty('history', expect.any(Array))
                 expect(res.body.history[0]).toHaveProperty('hospitalId', expect.any(Number))
+                expect(res.body.history[0]).toHaveProperty('userId', expect.any(Number))
+                expect(res.body.history[0]).toHaveProperty('id', expect.any(Number))
+                expect(res.body.history[0]).toHaveProperty('isWaitingResult', expect.any(Boolean))
                 done()
             })
     })
 })
 
-// describe('Get specific restaurant by its ID / ERROR CASE', () => {
-//     test('Failed because restaurant is not found (incorrect restaurantId)', (done) => {
-//         const false_restaurantId = 0
-//         request(app)
-//             .get(`/restaurants/${false_restaurantId}`)
-//             .end(function(err, res) {
-//                 const errors = ['Data Not Found']
-//                 if(err) throw err
-//                 expect(res.status).toBe(404)
-//                 expect(res.body).toHaveProperty('errors', expect.any(Array))
-//                 expect(res.body.errors).toEqual(expect.arrayContaining(errors))
-//                 done()
-//             })
-//     })
-// })
+const userHospital_data = {
+    userId: 300,
+    hospitalId: 100,
+    testingType: 'Swab',
+    isWaitingResult: true
+}
+
+describe('Save testing and hospital attendance history / SUCCESS CASE', () => {
+    test('should send and object with key message and addUserHospital', (done) => {
+        request(app)
+        .post('/history/hospitals')
+        .send(userHospital_data)
+        .end((err, res) => {
+            if(err) throw err
+            expect(res.status).toBe(201)
+            expect(res.body).toHaveProperty('message', 'Add Hospital History Success')
+            expect(res.body.addUserHospital).toHaveProperty('userId', userHospital_data.userId),
+            expect(res.body.addUserHospital).toHaveProperty('hospitalId', userHospital_data.hospitalId)
+            expect(res.body.addUserHospital).toHaveProperty('testingType', userHospital_data.testingType)
+            expect(res.body.addUserHospital).toHaveProperty('isWaitingResult', userHospital_data.isWaitingResult)
+            expect(res.body.addUserHospital).toHaveProperty('createdAt', expect.any(String))
+            expect(res.body.addUserHospital).toHaveProperty('updatedAt', expect.any(String))
+            done()
+        })
+    })
+})
