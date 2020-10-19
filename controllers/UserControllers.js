@@ -73,7 +73,7 @@ class UserControllers {
         res.status(200).send('Activation account successfully, you can close this page')
     }
     static async login(req, res, next) {
-        let {phone, deviceId} = req.body
+        let {phone} = req.body
         try {
             const user = await User.findOne({where:{phone}})
             if(!user) {
@@ -84,9 +84,6 @@ class UserControllers {
                 if(user.deviceId) {
                     throw {name: 'LOGOUT_FIRST'}
                 } else {
-                    const addDeviceId = await user.update({
-                        deviceId: deviceId
-                    })
                     const sendOtp = await client
                         .verify
                         .services(config.serviceID)
@@ -104,7 +101,7 @@ class UserControllers {
         }
     }
     static async verify(req, res, next) {
-        let {phone, code} = req.body
+        let {phone, code, deviceId} = req.body
         try {
             const user = await User.findOne({where: {phone}})
             const verifyOtp = await client
@@ -118,6 +115,9 @@ class UserControllers {
             if(!verifyOtp.valid) {
                 throw {name: 'INVALID_OTP'}
             } else {
+                const addDeviceId = await User.update({
+                    deviceId
+                }, {where: {phone}})
                 let payload = {
                     id: user.id,
                     phone
