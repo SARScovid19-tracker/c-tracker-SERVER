@@ -17,7 +17,7 @@ class UserHospitalControllers {
         try {
             const history = await UserHospital.findAll({
                 include: [Hospital],
-                attributes: ['id', 'userId', 'hospitalId', 'hospitalId', 'hospitalId', 'hospitalId', 'hospitalId', 'hospitalId'],
+                attributes: ['id', 'userId', 'hospitalId', 'testingType', 'isWaitingResult', 'createdAt', 'updatedAt', 'publishedAt'],
                 where: {userId}
             })
             res.status(200).json({history})
