@@ -7,14 +7,14 @@ let user_data = {
     phone: '+6212345678910',
     nik: '123456',
     name: 'Testing',
-    email: 'testing@mail.com',
-    deviceId: 'ulalablabla12345'
+    email: 'testing@mail.com'
 }
 
 const token = generateToken(user_data)
 
 let phone = {
-    phone: '+6289657501544'
+    phone: '+6289657501544',
+    deviceId: 'ulalablabla12345'
 }
 
 afterAll((done) => {
@@ -90,29 +90,29 @@ describe('register / Error Case', () => {
     })
 })
 
-describe('Activate Account / Success Case', () => {
-    test('should send "text Activation account successfully, you can close this page"', (done) => {
-        request(app)
-            .patch('/authentication/activate')
-            .query({token})
-            .end((err, res) => {
-                if(err) throw err
-                expect(res.status).toBe(200)
-                done()
-            })
-    })
-})
-
-// describe('Login User / Success Case', () => {
-//     test('should send object with key message', (done) => {
+// describe('Activate Account / Success Case', () => {
+//     test('should send "text Activation account successfully, you can close this page"', (done) => {
 //         request(app)
-//             .get('/login')
-//             .send(phone)
+//             .patch('/authentication/activate')
+//             .query({token})
 //             .end((err, res) => {
 //                 if(err) throw err
 //                 expect(res.status).toBe(200)
-//                 expect(res.body).toHaveProperty('message', 'Send OTP success..')
 //                 done()
 //             })
 //     })
 // })
+
+describe('Login User / Success Case', () => {
+    test('should send object with key message', (done) => {
+        request(app)
+            .patch('/login')
+            .send(phone)
+            .end((err, res) => {
+                if(err) throw err
+                expect(res.status).toBe(200)
+                expect(res.body).toHaveProperty('message', 'Send OTP success..')
+                done()
+            })
+    })
+})
