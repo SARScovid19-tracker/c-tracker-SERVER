@@ -19,7 +19,7 @@ function errorHandler(err, req, res, next) {
     } else if(err.name === 'INVALID_OTP') {
         statusCode = 400
         errors.push('Invalid OTP')
-    } else if(err.name === 'LOGIN_FAILED') {
+    } else if(err.name === 'LOGIN_FAILED_RS') {
         statusCode = 400
         errors.push('Invalid Email or Password')
     } else if(err.name === 'DATA_NOT_FOUND') {

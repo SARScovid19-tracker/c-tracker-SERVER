@@ -16,9 +16,10 @@ class UserHospitalControllers {
         const {userId} = req.params
         try {
             const history = await UserHospital.findAll({
-                include: [Hospital],
+                include: [Hospital, User],
                 attributes: ['id', 'userId', 'hospitalId', 'testingType', 'isWaitingResult', 'createdAt', 'updatedAt', 'publishedAt'],
-                where: {userId}
+                where: {userId},
+                order: [['createdAt', 'DESC']]
             })
             res.status(200).json({history})
         } catch(err) {
@@ -35,7 +36,6 @@ class UserHospitalControllers {
             })
             res.status(200).json({data})
         } catch(err) {
-            console.log(err)
             next(err)
         }
     }

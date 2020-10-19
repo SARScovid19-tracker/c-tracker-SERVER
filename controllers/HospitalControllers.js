@@ -10,11 +10,11 @@ class HospitalControllers {
         try {
             const data = await Hospital.findOne({where: {email}})
             if(!data) {
-                throw {name: 'LOGIN_FAILED'}
+                throw {name: 'LOGIN_FAILED_RS'}
             } else {
                 const comparePass = compareHash(password, data.password)
                 if(!comparePass) {
-                    throw {name: 'LOGIN_FAILED'}
+                    throw {name: 'LOGIN_FAILED_RS'}
                 } else {
                     let payload = {
                         id: data.id,
@@ -86,14 +86,12 @@ class HospitalControllers {
                 const output = await Promise.all(
                     restaurantList.map(userList)
                 )
-                let devId = []
-                output.forEach(data => {
-                    if(data.length !== 0) {
-                        devId.push(`ExponentPushToken[${data[0].User.deviceId}]`)
-                    }
-                })
-                // sendPushNotification(devId)
-                res.status(200).json({message: 'Success Send Notification'})
+                // output.forEach(async data => {
+                //     if(data.length !== 0) {
+                //         await devId.push(`ExponentPushToken[${data[0].User.name}]`)
+                //     }
+                // })
+                res.status(200).json({message: 'Success Send Notification', output})
             }
         } catch(err) {
             console.log(err)
