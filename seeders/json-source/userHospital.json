@@ -26,8 +26,8 @@
         "userId": 4,
         "hospitalId": 1,
         "testingType": "Rapid",
-        "isWaitingResult": false,
-        "publishedAt": "2020-10-21 20:14:30.532+07" 
+        "isWaitingResult": true,
+        "publishedAt": null 
         
     },
     {

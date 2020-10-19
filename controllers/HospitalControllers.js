@@ -91,6 +91,7 @@ class HospitalControllers {
                 output[0].forEach(data => {
                         devId.push(`ExponentPushToken[${data.User.name}]`)
                 })
+                console.log(devId)
                 res.status(200).json({message: 'Success Send Notification', devId})
                 return output
             }
