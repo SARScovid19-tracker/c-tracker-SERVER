@@ -3,6 +3,7 @@ const {compareHash} = require('../helpers/bcrypt')
 const {generateToken} = require('../helpers/jwt')
 const { Op } = require('sequelize')
 const moment = require('moment')
+const sendPushNotification = require('../helpers/notification')
 
 class HospitalControllers {
     static async login(req, res, next) {
@@ -75,6 +76,9 @@ class HospitalControllers {
                             restaurantId: item.restaurantId,
                             createdAt: {
                                 [Op.between]: [moment(item.createdAt).subtract(3, 'hours').toDate(), moment(item.createdAt).set({h: 23, m: 59, s: 59}).toDate()]
+                            },
+                            userId: {
+                                [Op.not]: item.userId
                             }
                         }
                     })
@@ -83,9 +87,17 @@ class HospitalControllers {
                 const output = await Promise.all(
                     restaurantList.map(userList)
                 )
-                res.status(200).json({output})
+                let devId = []
+                output.forEach(data => {
+                    if(data.length !== 0) {
+                        devId.push(`ExponentPushToken[${data[0].User.deviceId}]`)
+                    }
+                })
+                sendPushNotification(devId)
+                res.status(200).json({message: 'Success Send Notification'})
             }
         } catch(err) {
+            console.log(err)
             next(err)
         }
     }
