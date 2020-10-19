@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
-const PORT = process.env.PORT || 3000
+// const PORT = process.env.PORT || 3000
 const routers = require('./routers/index')
 const bp = require("body-parser")
 const errorHandler = require('./middlewares/errorHandler')
@@ -17,5 +17,9 @@ app.use(cors())
 
 app.use(routers)
 app.use(errorHandler)
+
+// app.listen(PORT, () => {
+//     console.log(`Server C-Tracker is running on port http://localhost:${PORT}`)
+// })
 
 module.exports = app
