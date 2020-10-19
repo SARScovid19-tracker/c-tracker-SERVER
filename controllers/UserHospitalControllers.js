@@ -30,7 +30,7 @@ class UserHospitalControllers {
         try {
             const data = await UserHospital.findAll({
                 include: [User],
-                attributes: ['id', 'userId', 'hospitalId', 'hospitalId', 'hospitalId', 'hospitalId', 'hospitalId', 'hospitalId'],
+                attributes: ['id', 'userId', 'testingType', 'hospitalId', 'createdAt', 'publishedAt'],
                 where: {hospitalId}
             })
             res.status(200).json({data})
