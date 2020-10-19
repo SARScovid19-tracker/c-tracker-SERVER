@@ -9,7 +9,7 @@
   "test": {
     "username": "postgres",
     "password": "satriko209",
-    "database": "c-tracker",
+    "database": "c-tracker-test",
     "host": "localhost",
     "dialect": "postgres",
     "logging": false
