@@ -1,7 +1,7 @@
 const {Hospital, User, UserRestaurant, UserHospital, Sequelize} = require('../models/')
 const {compareHash} = require('../helpers/bcrypt')
 const {generateToken} = require('../helpers/jwt')
-const { Op } = require('sequelize/types')
+const { Op } = require('sequelize')
 const moment = require('moment')
 
 class HospitalControllers {
@@ -68,6 +68,22 @@ class HospitalControllers {
                         }
                     }
                 })
+                async function userList(item) {
+                    let data = UserRestaurant.findAll({
+                        include: [User],
+                        where: {
+                            restaurantId: item.restaurantId,
+                            createdAt: {
+                                [Op.between]: [moment(item.createdAt).subtract(3, 'hours').toDate(), moment(item.createdAt).set({h: 23, m: 59, s: 59}).toDate()]
+                            }
+                        }
+                    })
+                    return data
+                }
+                const output = await Promise.all(
+                    restaurantList.map(userList)
+                )
+                res.status(200).json({output})
             }
         } catch(err) {
             next(err)
