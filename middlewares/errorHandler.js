@@ -28,6 +28,9 @@ function errorHandler(err, req, res, next) {
     } else if(err.name === 'LOGOUT_FIRST') {
         statusCode = 400
         errors.push('Please logout first on the previous device')
+    } else if(err.name === 'VERIFY_EMAIL_FIRST') {
+        statusCode = 400
+        errors.push('Please Verify Your Email First Before Login')
     } else {
         errors.push('Internal Server Error')
     }
