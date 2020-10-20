@@ -1,55 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1603103963112" clover="3.2.0">
-  <project timestamp="1603103963113" name="All files">
-    <metrics statements="289" coveredstatements="191" conditionals="53" coveredconditionals="23" methods="39" coveredmethods="24" elements="381" coveredelements="238" complexity="0" loc="289" ncloc="289" packages="7" files="22" classes="22"/>
+<coverage generated="1603167155165" clover="3.2.0">
+  <project timestamp="1603167155165" name="All files">
+    <metrics statements="349" coveredstatements="234" conditionals="63" coveredconditionals="27" methods="44" coveredmethods="29" elements="456" coveredelements="290" complexity="0" loc="349" ncloc="349" packages="7" files="25" classes="25"/>
     <package name="c-tracker-SERVER">
-      <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="app.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/app.js">
-        <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="16" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="app.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/app.js">
+        <metrics statements="16" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
         <line num="3" count="4" type="stmt"/>
-        <line num="4" count="4" type="stmt"/>
         <line num="5" count="4" type="stmt"/>
         <line num="6" count="4" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
         <line num="8" count="4" type="stmt"/>
-        <line num="9" count="4" type="stmt"/>
         <line num="10" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
         <line num="12" count="4" type="stmt"/>
-        <line num="13" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
         <line num="15" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="19" count="4" type="stmt"/>
+        <line num="25" count="4" type="stmt"/>
       </file>
     </package>
     <package name="c-tracker-SERVER.controllers">
-      <metrics statements="142" coveredstatements="66" conditionals="26" coveredconditionals="7" methods="17" coveredmethods="8"/>
-      <file name="HospitalControllers.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/controllers/HospitalControllers.js">
-        <metrics statements="44" coveredstatements="7" conditionals="10" coveredconditionals="0" methods="5" coveredmethods="0"/>
+      <metrics statements="190" coveredstatements="94" conditionals="36" coveredconditionals="11" methods="22" coveredmethods="11"/>
+      <file name="HospitalControllers.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/controllers/HospitalControllers.js">
+        <metrics statements="45" coveredstatements="23" conditionals="8" coveredconditionals="4" methods="5" coveredmethods="2"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
         <line num="3" count="4" type="stmt"/>
         <line num="4" count="4" type="stmt"/>
         <line num="5" count="4" type="stmt"/>
         <line num="6" count="4" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="14" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="18" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="39" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="39" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
         <line num="54" count="0" type="stmt"/>
         <line num="55" count="0" type="stmt"/>
         <line num="56" count="0" type="stmt"/>
@@ -62,14 +66,69 @@
         <line num="87" count="0" type="stmt"/>
         <line num="90" count="0" type="stmt"/>
         <line num="91" count="0" type="stmt"/>
-        <line num="92" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="93" count="0" type="stmt"/>
-        <line num="97" count="0" type="stmt"/>
+        <line num="92" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="95" count="0" type="stmt"/>
+        <line num="96" count="0" type="stmt"/>
+        <line num="99" count="0" type="stmt"/>
         <line num="100" count="0" type="stmt"/>
-        <line num="101" count="0" type="stmt"/>
-        <line num="106" count="4" type="stmt"/>
+        <line num="105" count="4" type="stmt"/>
       </file>
-      <file name="RestaurantController.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/controllers/RestaurantController.js">
+      <file name="QrHospitalControllers.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/controllers/QrHospitalControllers.js">
+        <metrics statements="31" coveredstatements="5" conditionals="8" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="53" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="68" count="4" type="stmt"/>
+      </file>
+      <file name="QrRestaurantControllers.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/controllers/QrRestaurantControllers.js">
+        <metrics statements="17" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="44" count="4" type="stmt"/>
+      </file>
+      <file name="RestaurantController.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/controllers/RestaurantController.js">
         <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="4" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
@@ -81,7 +140,7 @@
         <line num="18" count="1" type="stmt"/>
         <line num="23" count="4" type="stmt"/>
       </file>
-      <file name="UserControllers.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/controllers/UserControllers.js">
+      <file name="UserControllers.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/controllers/UserControllers.js">
         <metrics statements="59" coveredstatements="30" conditionals="14" coveredconditionals="5" methods="6" coveredmethods="3"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
@@ -121,16 +180,16 @@
         <line num="84" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="85" count="0" type="stmt"/>
         <line num="87" count="0" type="stmt"/>
-        <line num="90" count="0" type="stmt"/>
-        <line num="98" count="0" type="stmt"/>
-        <line num="102" count="1" type="stmt"/>
-        <line num="103" count="1" type="stmt"/>
+        <line num="95" count="0" type="stmt"/>
+        <line num="99" count="1" type="stmt"/>
+        <line num="100" count="1" type="stmt"/>
+        <line num="104" count="0" type="stmt"/>
+        <line num="105" count="0" type="stmt"/>
+        <line num="106" count="0" type="stmt"/>
         <line num="107" count="0" type="stmt"/>
-        <line num="108" count="0" type="stmt"/>
-        <line num="109" count="0" type="stmt"/>
-        <line num="110" count="0" type="stmt"/>
-        <line num="118" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="119" count="0" type="stmt"/>
+        <line num="115" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="116" count="0" type="stmt"/>
+        <line num="118" count="0" type="stmt"/>
         <line num="121" count="0" type="stmt"/>
         <line num="125" count="0" type="stmt"/>
         <line num="126" count="0" type="stmt"/>
@@ -143,8 +202,8 @@
         <line num="154" count="0" type="stmt"/>
         <line num="159" count="4" type="stmt"/>
       </file>
-      <file name="UserHospitalControllers.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/controllers/UserHospitalControllers.js">
-        <metrics statements="18" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+      <file name="UserHospitalControllers.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/controllers/UserHospitalControllers.js">
+        <metrics statements="17" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
         <line num="1" count="4" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
@@ -154,17 +213,16 @@
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="44" count="4" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="45" count="4" type="stmt"/>
       </file>
-      <file name="UserRestaurantControllers.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/controllers/UserRestaurantControllers.js">
+      <file name="UserRestaurantControllers.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/controllers/UserRestaurantControllers.js">
         <metrics statements="12" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="1" count="4" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
@@ -181,23 +239,23 @@
       </file>
     </package>
     <package name="c-tracker-SERVER.helpers">
-      <metrics statements="15" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="1"/>
-      <file name="bcrypt.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/helpers/bcrypt.js">
-        <metrics statements="5" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <metrics statements="15" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="3"/>
+      <file name="bcrypt.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/helpers/bcrypt.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="1" count="4" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
         <line num="12" count="4" type="stmt"/>
       </file>
-      <file name="jwt.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/helpers/jwt.js">
+      <file name="jwt.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/helpers/jwt.js">
         <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="1" count="4" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
         <line num="11" count="4" type="stmt"/>
       </file>
-      <file name="notification.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/helpers/notification.js">
+      <file name="notification.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/helpers/notification.js">
         <metrics statements="6" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
@@ -209,32 +267,32 @@
     </package>
     <package name="c-tracker-SERVER.middlewares">
       <metrics statements="33" coveredstatements="20" conditionals="18" coveredconditionals="10" methods="2" coveredmethods="2"/>
-      <file name="errorHandler.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/middlewares/errorHandler.js">
+      <file name="errorHandler.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/middlewares/errorHandler.js">
         <metrics statements="33" coveredstatements="20" conditionals="18" coveredconditionals="10" methods="2" coveredmethods="2"/>
-        <line num="2" count="5" type="stmt"/>
-        <line num="3" count="5" type="stmt"/>
-        <line num="5" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="2" count="6" type="stmt"/>
+        <line num="3" count="6" type="stmt"/>
+        <line num="5" count="6" type="cond" truecount="2" falsecount="0"/>
         <line num="6" count="2" type="stmt"/>
         <line num="7" count="2" type="stmt"/>
         <line num="8" count="3" type="stmt"/>
-        <line num="10" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="4" type="cond" truecount="2" falsecount="0"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
-        <line num="13" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="13" count="3" type="cond" truecount="1" falsecount="1"/>
         <line num="14" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
-        <line num="16" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="16" count="3" type="cond" truecount="2" falsecount="0"/>
         <line num="17" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
-        <line num="19" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="19" count="2" type="cond" truecount="1" falsecount="1"/>
         <line num="20" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
-        <line num="22" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="22" count="2" type="cond" truecount="1" falsecount="1"/>
         <line num="23" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
-        <line num="25" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
+        <line num="25" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
         <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="29" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
@@ -242,13 +300,13 @@
         <line num="32" count="0" type="stmt"/>
         <line num="33" count="0" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
-        <line num="37" count="5" type="stmt"/>
+        <line num="37" count="6" type="stmt"/>
         <line num="40" count="4" type="stmt"/>
       </file>
     </package>
     <package name="c-tracker-SERVER.models">
       <metrics statements="48" coveredstatements="47" conditionals="9" coveredconditionals="6" methods="13" coveredmethods="13"/>
-      <file name="hospital.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/models/hospital.js">
+      <file name="hospital.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/models/hospital.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="4" count="4" type="stmt"/>
         <line num="5" count="4" type="stmt"/>
@@ -256,7 +314,7 @@
         <line num="17" count="4" type="stmt"/>
         <line num="26" count="4" type="stmt"/>
       </file>
-      <file name="index.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/models/index.js">
+      <file name="index.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/models/index.js">
         <metrics statements="20" coveredstatements="19" conditionals="9" coveredconditionals="6" methods="3" coveredmethods="3"/>
         <line num="3" count="4" type="stmt"/>
         <line num="4" count="4" type="stmt"/>
@@ -279,7 +337,7 @@
         <line num="35" count="4" type="stmt"/>
         <line num="37" count="4" type="stmt"/>
       </file>
-      <file name="restaurant.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/models/restaurant.js">
+      <file name="restaurant.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/models/restaurant.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="4" count="4" type="stmt"/>
         <line num="5" count="4" type="stmt"/>
@@ -287,7 +345,7 @@
         <line num="17" count="4" type="stmt"/>
         <line num="25" count="4" type="stmt"/>
       </file>
-      <file name="user.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/models/user.js">
+      <file name="user.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/models/user.js">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="4" count="4" type="stmt"/>
         <line num="6" count="4" type="stmt"/>
@@ -296,7 +354,7 @@
         <line num="19" count="4" type="stmt"/>
         <line num="115" count="4" type="stmt"/>
       </file>
-      <file name="userhospital.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/models/userhospital.js">
+      <file name="userhospital.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/models/userhospital.js">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="4" count="4" type="stmt"/>
         <line num="5" count="4" type="stmt"/>
@@ -305,7 +363,7 @@
         <line num="18" count="4" type="stmt"/>
         <line num="28" count="4" type="stmt"/>
       </file>
-      <file name="userrestaurant.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/models/userrestaurant.js">
+      <file name="userrestaurant.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/models/userrestaurant.js">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="4" count="4" type="stmt"/>
         <line num="5" count="4" type="stmt"/>
@@ -317,14 +375,14 @@
     </package>
     <package name="c-tracker-SERVER.otp">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="config.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/otp/config.js">
+      <file name="config.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/otp/config.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
       </file>
     </package>
     <package name="c-tracker-SERVER.routers">
-      <metrics statements="38" coveredstatements="38" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="historyRouter.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/routers/historyRouter.js">
+      <metrics statements="46" coveredstatements="46" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="historyRouter.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/routers/historyRouter.js">
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
@@ -335,7 +393,7 @@
         <line num="8" count="4" type="stmt"/>
         <line num="10" count="4" type="stmt"/>
       </file>
-      <file name="hospitalRouter.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/routers/hospitalRouter.js">
+      <file name="hospitalRouter.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/routers/hospitalRouter.js">
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
@@ -346,27 +404,38 @@
         <line num="8" count="4" type="stmt"/>
         <line num="10" count="4" type="stmt"/>
       </file>
-      <file name="index.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/routers/index.js">
-        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/routers/index.js">
+        <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
         <line num="3" count="4" type="stmt"/>
         <line num="4" count="4" type="stmt"/>
         <line num="5" count="4" type="stmt"/>
-        <line num="7" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
         <line num="8" count="4" type="stmt"/>
         <line num="9" count="4" type="stmt"/>
         <line num="10" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
         <line num="12" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
       </file>
-      <file name="restaurantRouter.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/routers/restaurantRouter.js">
+      <file name="qrRouter.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/routers/qrRouter.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+      </file>
+      <file name="restaurantRouter.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/routers/restaurantRouter.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
         <line num="4" count="4" type="stmt"/>
         <line num="6" count="4" type="stmt"/>
       </file>
-      <file name="userRouter.js" path="/home/satriko/Documents/Hacktiv8/phase3/week3/c-tracker-SERVER/routers/userRouter.js">
+      <file name="userRouter.js" path="/Users/rifkybakar/hactiv8/phase3/week4/c-tracker-SERVER/routers/userRouter.js">
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>

@@ -7,18 +7,18 @@ const dummy_data = {
     restaurantId: 500
 }
 
-// afterAll((done) => {
-//     UserRestaurant.destory({
-//         where: {
-//             userId: dummy_data.userId,
-//             restaurantId: dummy_data.restaurantId
-//         }
-//     })
-//     .then(_ => {
-//         done()
-//     })
-//     .catch(err => done(err))
-// })
+afterAll((done) => {
+    UserRestaurant.destroy({
+        where: {
+            userId: dummy_data.userId,
+            restaurantId: dummy_data.restaurantId
+        }
+    })
+    .then(_ => {
+        done()
+    })
+    .catch(err => done(err))
+})
 
 describe('Save History Restaurant / Success Case', () => {
     test('should send and object with key message and addUserRestaurant', (done) => {
