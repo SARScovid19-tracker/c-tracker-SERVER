@@ -5,8 +5,6 @@ const {generateToken} = require('../helpers/jwt')
 const axios = require('axios')
 const sendPushNotification = require('../helpers/notification')
 
-
-
 let user_data = {
     phone: '+6212345678910',
     nik: '123456',
@@ -19,6 +17,12 @@ const token = generateToken(user_data)
 let phone = {
     phone: '+6289657501544',
     deviceId: 'ulalablabla12345'
+}
+
+let phone_verify = {
+    phone: '+62811371104',
+    code: 628217,
+    deviceId: 'blublub1234'
 }
 
 afterAll((done) => {
@@ -46,8 +50,6 @@ test('should be able to send device token', () => {
     return sendPushNotification('ExponentPushToken[noIv86Iv0kqMRacllB1h0q]')
         .then(({msg}) => expect(res.status).toBe(201))
 })
-
-
 
 describe('register / Success Case', () => {
     test('should send object with key message, name, and email', (done) => {
@@ -176,6 +178,23 @@ describe('Login User / Success Case', () => {
                 if(err) throw err
                 expect(res.status).toBe(200)
                 expect(res.body).toHaveProperty('message', 'Send OTP success..')
+                done()
+            })
+    })
+})
+
+describe('Verify User / Success Case', () => {
+    test('should send object with key message', (done) => {
+        request(app)
+            .post('/verify')
+            .send(phone_verify)
+            .end((err, res) => {
+                if(err) throw err
+                expect(res.status).toBe(200)
+                expect(res.body).toHaveProperty('message', 'Thanks, Login Success!')
+                expect(res.body).toHaveProperty('deviceId', phone_verify.deviceId)
+                expect(res.body).toHaveProperty('token', expect.any(String))
+                expect(res.body).toHaveProperty('isEmailVerify', true)
                 done()
             })
     })
