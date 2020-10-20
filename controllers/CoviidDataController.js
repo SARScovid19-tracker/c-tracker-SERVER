@@ -12,7 +12,6 @@ class CovidDataController {
                 tanggal: data.penambahan.tanggal
             })
         } catch(err) {
-            console.log(err)
             next(err)
         }
     }
