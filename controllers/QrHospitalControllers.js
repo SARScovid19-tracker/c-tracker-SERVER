@@ -13,6 +13,8 @@ class HospitalControllers {
             } else {
                 const data = 
                 {
+                    type: 'hospital',
+                    hospitalId: id,
                     name: hospital.name,
                     email: hospital.email,
                     address: hospital.address
@@ -23,8 +25,10 @@ class HospitalControllers {
                 qr.toDataURL(datas, (err, src) =>
                 {
                     // console.log(src);
-                    res.status(200).json({ hospital_QR: src })
-                    // res.render("scan", {src})
+
+                    // RENDER TO REACT LATER
+                    // res.status(200).json({ hospital_QR: src })
+                    res.render("scan", {src})
                 })
             }
         } catch(err) {

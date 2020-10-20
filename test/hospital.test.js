@@ -6,6 +6,7 @@ const { hashData } = require('../helpers/bcrypt')
 let userId = 0
 let hospitalId = 0
 let userHospitalId = 0
+let historyId = 0
 
 let user_data = {
     phone: '+62811111111',
@@ -41,11 +42,16 @@ beforeAll(async function(done) {
             hospitalId,
             testingType: '[DUMMY]Swab',
             isWaitingResult: true
-        })
+        }, { returning: ['id']})
+        historyId = userHospital.id
         userHospital_data.userId = userId
         userHospital_data.hospitalId = hospitalId
         userHospital_data.testingType = userHospital.testingType
         userHospital_data.isWaitingResult = userHospital.isWaitingResult
+        // console.log(userHospital, '<<<<< userHospital itself');
+        // console.log(userHospital.id, '<<<<<<< historyId');
+        // console.log(userHospital_data.userId, '<<<<<<< userId');
+        // console.log(userHospital_data.hospitalId, '<<<<<<< hospitalId');
         done()
     } catch (err) {
         done(err)
@@ -113,7 +119,7 @@ describe('Save testing and hospital attendance history / SUCCESS CASE', () => {
 })
 
 describe('Hospital Admin Login / Success Case', () => {
-    test('Should send object with keys: token, hospitalId and message', (done) => {
+    test('Should send object with keys: email and password', (done) => {
         request(app)
             .post('/hospitals/login')
             .send({
@@ -127,6 +133,43 @@ describe('Hospital Admin Login / Success Case', () => {
                 expect(res.body).toHaveProperty('token', expect.any(String))
                 expect(res.body).toHaveProperty('hospitalId', expect.any(Number))
                 expect(res.body).not.toHaveProperty('password')
+                done()
+            })
+    })
+})
+
+describe('Hospital Admin Login / ERROR CASE', () => {
+    test('Failed because email has not been registered', (done) => {
+        const fake_email = 'zzz@zzz.com'
+        request(app)
+            .post('/hospitals/login')
+            .send({
+                email: fake_email,
+                password: '12345678'
+            })
+            .end(function(err, res) {
+                const errors = ['Invalid Email or Password']
+                if(err) throw err
+                expect(res.status).toBe(400)
+                expect(res.body).toHaveProperty('errors', expect.any(Array))
+                expect(res.body.errors).toEqual(expect.arrayContaining(errors))
+                done()
+            })
+    })
+    test('Failed because of wrong password', (done) => {
+        const wrongPassword = 'semuaLulusPakeTeachersAward'
+        request(app)
+            .post('/hospitals/login')
+            .send({
+                email: hospitalAdmin_data.email,
+                password: wrongPassword
+            })
+            .end(function(err, res) {
+                const errors = ['Invalid Email or Password']
+                if(err) throw err
+                expect(res.status).toBe(400)
+                expect(res.body).toHaveProperty('errors', expect.any(Array))
+                expect(res.body.errors).toEqual(expect.arrayContaining(errors))
                 done()
             })
     })
@@ -194,7 +237,6 @@ describe('Get specific hospital by its ID for QR / ERROR CASE', () => {
     })
 })
 
-
 describe('Get list of patients of specific hospital by its id / SUCCESS CASE', () => {
     test('Should get object with at least following keys: hospitalId, userId, id, testingType', (done) => {
         request(app)
@@ -207,6 +249,23 @@ describe('Get list of patients of specific hospital by its id / SUCCESS CASE', (
                 expect(res.body.data[0]).toHaveProperty('userId', expect.any(Number))
                 expect(res.body.data[0]).toHaveProperty('id', expect.any(Number))
                 expect(res.body.data[0]).toHaveProperty('testingType', expect.any(String))
+                done()
+            })
+    })
+})
+
+describe('Update user history list of doing COVID-19 testing / Success Case', () => {
+    test('Update the testing result to NEGATIVE', (done) => {
+        request(app)
+            .put('/hospitals/update-status')
+            .send({
+                userId, status: "Negative", hospitalId, historyId
+            })
+            .end(function(err, res) {
+                if(err) throw err
+                expect(res.status).toBe(200)
+                expect(res.body).toHaveProperty('message', 'Update Success..')
+                expect(res.body).toHaveProperty('message', expect.any(String))
                 done()
             })
     })
