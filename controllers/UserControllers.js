@@ -130,7 +130,7 @@ class UserControllers {
                     phone,
                     nik: user.nik,
                     name: user.name,
-                    deviceId: user.deviceId,
+                    deviceId,
                     isEmailVerify: user.isEmailVerify
                 })
             }
