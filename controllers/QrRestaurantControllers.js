@@ -11,6 +11,8 @@ class RestaurantController {
             } else {
                 const data = 
                 {
+                    type: 'restaurant',
+                    restaurantId: id,
                     name: restaurant.name,
                     email: restaurant.email,
                     address: restaurant.address
@@ -25,13 +27,10 @@ class RestaurantController {
         
                 qr.toDataURL(datas, (err, src) =>
                 {
-                    if(err) 
-                    {
-                        res.send ("Error Data")
-                        console.log(err);
-                    }
                     // console.log(src);
-                    res.render("scan", {src})
+                    // RENDER TO REACT LATER
+                    res.status(200).json({ restaurant_QR: src })
+                    // res.render("scan", {src})
                 })
             }
         } catch(err) {
