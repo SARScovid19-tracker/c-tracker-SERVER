@@ -140,6 +140,22 @@ describe('Get lists of attended hospital for COVID-19 testing by specific user /
     })
 })
 
+describe('Get lists of attended hospital for COVID-19 testing by specific user / ERROR CASE', () => {
+    test('Failed because user is not found (incorrect ID)', (done) => {
+        const false_userId = ['false']
+        request(app)
+            .get(`/history/hospitals/${false_userId}`)
+            .end(function(err, res) {
+                const errors = ['Internal Server Error']
+                if(err) throw err
+                expect(res.status).toBe(500)
+                expect(res.body).toHaveProperty('errors', expect.any(Array))
+                expect(res.body.errors).toEqual(expect.arrayContaining(errors))
+                done()
+            })
+    })
+})
+
 describe('Save testing and hospital attendance history / SUCCESS CASE', () => {
     test('should send and object with key message and addUserHospital', (done) => {
         request(app)
@@ -155,6 +171,22 @@ describe('Save testing and hospital attendance history / SUCCESS CASE', () => {
             expect(res.body.addUserHospital).toHaveProperty('isWaitingResult', userHospital_data.isWaitingResult)
             expect(res.body.addUserHospital).toHaveProperty('createdAt', expect.any(String))
             expect(res.body.addUserHospital).toHaveProperty('updatedAt', expect.any(String))
+            done()
+        })
+    })
+})
+
+describe('Save testing and hospital attendance history / ERROR CASE', () => {
+    test('failed because of hospitalId is filled with non-integer character', (done) => {
+        request(app)
+        .post('/history/hospitals')
+        .send({ hospitalId: ['Supposed to be not this data']})
+        .end(function(err, res) {
+            const errors = ['Internal Server Error']
+            if(err) throw err
+            expect(res.status).toBe(500)
+            expect(res.body).toHaveProperty('errors', expect.any(Array))
+            expect(res.body.errors).toEqual(expect.arrayContaining(errors))
             done()
         })
     })
@@ -291,6 +323,22 @@ describe('Get list of patients of specific hospital by its id / SUCCESS CASE', (
                 expect(res.body.data[0]).toHaveProperty('userId', expect.any(Number))
                 expect(res.body.data[0]).toHaveProperty('id', expect.any(Number))
                 expect(res.body.data[0]).toHaveProperty('testingType', expect.any(String))
+                done()
+            })
+    })
+})
+
+describe('Get list of patients of specific hospital by its id / ERROR CASE', () => {
+    test('Failed because hospital is not found (incorrect ID)', (done) => {
+        const false_hospitalId = ['false']
+        request(app)
+            .get(`/hospitals/patient-list/${false_hospitalId}`)
+            .end(function(err, res) {
+                const errors = ['Internal Server Error']
+                if(err) throw err
+                expect(res.status).toBe(500)
+                expect(res.body).toHaveProperty('errors', expect.any(Array))
+                expect(res.body.errors).toEqual(expect.arrayContaining(errors))
                 done()
             })
     })
