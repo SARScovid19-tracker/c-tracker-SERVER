@@ -25,13 +25,9 @@ class RestaurantController {
         
                 qr.toDataURL(datas, (err, src) =>
                 {
-                    if(err) 
-                    {
-                        res.send ("Error Data")
-                        console.log(err);
-                    }
                     // console.log(src);
-                    res.render("scan", {src})
+                    res.status(200).json({ restaurant_QR: src })
+                    // res.render("scan", {src})
                 })
             }
         } catch(err) {

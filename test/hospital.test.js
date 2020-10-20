@@ -165,6 +165,36 @@ describe('Get hospital by its ID / ERROR CASE', () => {
     })
 })
 
+describe('Get specific hospital by its ID for QR / SUCCESS CASE', () => {
+    test('Should get object with keys: hospital_QR', (done) => {
+        request(app)
+            .get(`/qr/hospitals/${hospitalId}`)
+            .end(function(err, res) {
+                if(err) throw err
+                expect(res.status).toBe(200)
+                expect(res.body).toHaveProperty('hospital_QR', expect.any(String))
+                done()
+            })
+    })
+})
+
+describe('Get specific hospital by its ID for QR / ERROR CASE', () => {
+    test('Failed because hospital is not found (incorrect hospitalId)', (done) => {
+        const false_hospitalId = 0
+        request(app)
+            .get(`/qr/hospitals/${false_hospitalId}`)
+            .end(function(err, res) {
+                const errors = ['Data Not Found']
+                if(err) throw err
+                expect(res.status).toBe(404)
+                expect(res.body).toHaveProperty('errors', expect.any(Array))
+                expect(res.body.errors).toEqual(expect.arrayContaining(errors))
+                done()
+            })
+    })
+})
+
+
 describe('Get list of patients of specific hospital by its id / SUCCESS CASE', () => {
     test('Should get object with at least following keys: hospitalId, userId, id, testingType', (done) => {
         request(app)
