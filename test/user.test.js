@@ -29,6 +29,11 @@ afterAll((done) => {
     .catch(err => done(err))
 })
 
+afterEach(() => { 
+    jest.clearAllMocks(); 
+    jest.resetAllMocks();
+  });
+
 describe('register / Success Case', () => {
     test('should send object with key message, name, and email', (done) => {
         request(app)
@@ -45,7 +50,6 @@ describe('register / Success Case', () => {
     })
 })
 
-
 describe('register / Error Case', () => {
     test('error because phone number already registered', (done) => {
         request(app)
@@ -59,6 +63,21 @@ describe('register / Error Case', () => {
                 expect(res.body.errors).toEqual(expect.arrayContaining(errors))
                 done()
             })
+    })
+    test('error because email already registered', (done) => {
+        let email_already = {...user_data, phone: '1000222345'}
+        request(app)
+            .post('/register')
+            .send(email_already)
+            .end((err, res) => {
+                const errors = ['Email Already Registered']
+                if(err) throw err
+                expect(res.status).toBe(400)
+                expect(res.body).toHaveProperty('errors', expect.any(Array))
+                expect(res.body.errors).toEqual(expect.arrayContaining(errors))
+                done()
+            })
+
     })
     test('error because one of required field is empty', (done) => {
         const empty_nik = {...user_data, phone: '1000222345', email: 'testt@mail.com', nik: ''}
@@ -90,18 +109,48 @@ describe('register / Error Case', () => {
     })
 })
 
-// describe('Activate Account / Success Case', () => {
-//     test('should send "text Activation account successfully, you can close this page"', (done) => {
-//         request(app)
-//             .patch('/authentication/activate')
-//             .query({token})
-//             .end((err, res) => {
-//                 if(err) throw err
-//                 expect(res.status).toBe(200)
-//                 done()
-//             })
-//     })
-// })
+describe('Activate Account / Success Case', () => {
+    test('should send "text Activation account successfully, you can close this page"', (done) => {
+        request(app)
+            .get('/authentication/activate')
+            .query({token: token})
+            .end((err, res) => {
+                if(err) throw err
+                expect(res.status).toBe(200)
+                done()
+            })
+    })
+})
+
+describe('Logout Account / Success Case', () => {
+    test('should send object with key message', (done) => {
+        request(app)
+            .patch('/logout')
+            .send({phone: '+6212345678910'})
+            .end((err, res) => {
+                if(err) throw err
+                expect(res.status).toBe(200)
+                expect(res.body).toHaveProperty('message', 'Logout Success')
+                done()
+            })
+    })
+})
+
+describe('Logout Account / Error Case', () => {
+    test('error internal server error', (done) => {
+        request(app)
+            .patch('/logout')
+            .send('+6212345678910')
+            .end((err, res) => {
+                const errors = ['Internal Server Error']
+                if(err) throw err
+                expect(res.status).toBe(500)
+                expect(res.body).toHaveProperty('errors', expect.any(Array))
+                expect(res.body.errors).toEqual(expect.arrayContaining(errors))
+                done()
+            })
+    })
+})
 
 describe('Login User / Success Case', () => {
     test('should send object with key message', (done) => {
@@ -112,6 +161,54 @@ describe('Login User / Success Case', () => {
                 if(err) throw err
                 expect(res.status).toBe(200)
                 expect(res.body).toHaveProperty('message', 'Send OTP success..')
+                done()
+            })
+    })
+})
+
+describe('Login User / Error Case', () => {
+    test('error because phone number is wrong', (done) => {
+        const errors = ['Invalid Phone Number']
+        request(app)
+            .patch('/login')
+            .send({phone: '123456789'})
+            .end((err, res) => {
+                if(err) throw err
+                expect(res.status).toBe(400)
+                expect(res.body).toHaveProperty('errors', expect.any(Array))
+                expect(res.body.errors).toEqual(expect.arrayContaining(errors))
+                done()
+            })
+    })
+})
+
+describe('Login User / Error Case', () => {
+    test('error because email is not verify', (done) => {
+        const errors = ['Please Verify Your Email First Before Login']
+        request(app)
+            .patch('/login')
+            .send({phone: '+6289657501545'})
+            .end((err, res) => {
+                if(err) throw err
+                expect(res.status).toBe(400)
+                expect(res.body).toHaveProperty('errors', expect.any(Array))
+                expect(res.body.errors).toEqual(expect.arrayContaining(errors))
+                done()
+            })
+    })
+})
+
+describe('Login User / Error Case', () => {
+    test('error because email is not verify', (done) => {
+        const errors = ['Please logout first on the previous device']
+        request(app)
+            .patch('/login')
+            .send({phone: '62812345699'})
+            .end((err, res) => {
+                if(err) throw err
+                expect(res.status).toBe(400)
+                expect(res.body).toHaveProperty('errors', expect.any(Array))
+                expect(res.body.errors).toEqual(expect.arrayContaining(errors))
                 done()
             })
     })
