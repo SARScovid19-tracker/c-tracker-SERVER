@@ -18,7 +18,7 @@ class UserControllers {
                     throw {name: 'EMAIL_NOT_UNIQUE'}
                 } else {
                     const user = await User.create({
-                        phone, nik, name, email, status: 'negative', isEmailVerify: false
+                        phone, nik, name, email, status: 'Negative', isEmailVerify: false
                     })
                     const payload = {
                         phone, nik, name, email
@@ -73,18 +73,17 @@ class UserControllers {
         res.status(200).send('Activation account successfully, you can close this page')
     }
     static async login(req, res, next) {
-        let {phone, deviceId} = req.body
+        let {phone} = req.body
         try {
             const user = await User.findOne({where:{phone}})
             if(!user) {
                 throw {name: 'LOGIN_FAILED'}
+            } else if(!user.isEmailVerify) {
+                throw {name: 'VERIFY_EMAIL_FIRST'}
             } else {
                 if(user.deviceId) {
                     throw {name: 'LOGOUT_FIRST'}
                 } else {
-                    const addDeviceId = await user.update({
-                        deviceId: deviceId
-                    })
                     const sendOtp = await client
                         .verify
                         .services(config.serviceID)
@@ -102,7 +101,7 @@ class UserControllers {
         }
     }
     static async verify(req, res, next) {
-        let {phone, code} = req.body
+        let {phone, code, deviceId} = req.body
         try {
             const user = await User.findOne({where: {phone}})
             const verifyOtp = await client
@@ -116,6 +115,9 @@ class UserControllers {
             if(!verifyOtp.valid) {
                 throw {name: 'INVALID_OTP'}
             } else {
+                const addDeviceId = await User.update({
+                    deviceId
+                }, {where: {phone}})
                 let payload = {
                     id: user.id,
                     phone
@@ -128,7 +130,8 @@ class UserControllers {
                     phone,
                     nik: user.nik,
                     name: user.name,
-                    deviceId: user.deviceId
+                    deviceId: user.deviceId,
+                    isEmailVerify: user.isEmailVerify
                 })
             }
         } catch(err) {

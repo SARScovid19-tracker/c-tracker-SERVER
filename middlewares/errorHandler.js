@@ -19,7 +19,7 @@ function errorHandler(err, req, res, next) {
     } else if(err.name === 'INVALID_OTP') {
         statusCode = 400
         errors.push('Invalid OTP')
-    } else if(err.name === 'LOGIN_FAILED') {
+    } else if(err.name === 'LOGIN_FAILED_RS') {
         statusCode = 400
         errors.push('Invalid Email or Password')
     } else if(err.name === 'DATA_NOT_FOUND') {
@@ -28,6 +28,9 @@ function errorHandler(err, req, res, next) {
     } else if(err.name === 'LOGOUT_FIRST') {
         statusCode = 400
         errors.push('Please logout first on the previous device')
+    } else if(err.name === 'VERIFY_EMAIL_FIRST') {
+        statusCode = 400
+        errors.push('Please Verify Your Email First Before Login')
     } else {
         errors.push('Internal Server Error')
     }
