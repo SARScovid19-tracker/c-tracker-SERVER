@@ -22,7 +22,11 @@ beforeAll(async function(done) {
 
 afterAll(async function(done) {
     try {
-        await Restaurant.destroy({ truncate:true })
+        await Restaurant.destroy(({
+            where: {
+                id: restaurantId
+            } 
+        }))
         done()
     } catch (err) {
         done(err)

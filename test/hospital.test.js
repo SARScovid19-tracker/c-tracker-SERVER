@@ -3,8 +3,12 @@ const app = require('../app')
 const { UserHospital, User, Hospital } = require('../models')
 const { hashData } = require('../helpers/bcrypt')
 
+let userId = 0
+let hospitalId = 0
+let userHospitalId = 0
+
 let user_data = {
-    phone: '+62811371104',
+    phone: '+62811111111',
     nik: 123456,
     name: 'Kiko',
     email: 'kiko@yahoo.com',
@@ -13,14 +17,18 @@ let user_data = {
 }
 
 let hospitalAdmin_data = {
-    name: 'RS Mitra Kerja',
+    name: '[DUMMY] RS Mitra Kerja',
     email: 'rsmitrakerja.admin@yahoo.com',
     address: 'Bogor, Jawa Barat',
     password: hashData('12345678')
 }
 
-let userId = 0
-let hospitalId = 0
+let userHospital_data = {
+    userId,
+    hospitalId,
+    testingType: '[DUMMY]Swab',
+    isWaitingResult: true
+}
 
 beforeAll(async function(done) {
     try {
@@ -28,12 +36,16 @@ beforeAll(async function(done) {
         userId = user.id
         let hospital = await Hospital.create(hospitalAdmin_data)
         hospitalId = hospital.id
-        await UserHospital.create({
+        let userHospital = await UserHospital.create({
             userId,
             hospitalId,
-            testingType: 'Swab',
-            isWaitingResult: false
+            testingType: '[DUMMY]Swab',
+            isWaitingResult: true
         })
+        userHospital_data.userId = userId
+        userHospital_data.hospitalId = hospitalId
+        userHospital_data.testingType = userHospital.testingType
+        userHospital_data.isWaitingResult = userHospital.isWaitingResult
         done()
     } catch (err) {
         done(err)
@@ -42,9 +54,21 @@ beforeAll(async function(done) {
 
 afterAll(async function(done) {
     try {
-        await User.destroy({ truncate:true })
-        await UserHospital.destroy({ truncate:true })
-        await Hospital.destroy({ truncate:true })
+        await User.destroy({
+            where: {
+                phone: '+62811111111'
+            } 
+        })
+        await UserHospital.destroy({
+            where: {
+                testingType: '[DUMMY]Swab'
+            } 
+        })
+        await Hospital.destroy({
+            where: {
+                name: '[DUMMY] RS Mitra Kerja'
+            } 
+        })
         done()
     } catch (err) {
         done(err)
@@ -67,13 +91,6 @@ describe('Get lists of attended hospital for COVID-19 testing by specific user /
             })
     })
 })
-
-const userHospital_data = {
-    userId: 300,
-    hospitalId: 100,
-    testingType: 'Swab',
-    isWaitingResult: true
-}
 
 describe('Save testing and hospital attendance history / SUCCESS CASE', () => {
     test('should send and object with key message and addUserHospital', (done) => {
