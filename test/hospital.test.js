@@ -1,9 +1,17 @@
 const request = require('supertest')
 const app = require('../app')
-const { UserHospital, User, Hospital } = require('../models')
+const { UserHospital, User, Hospital, Restaurant, UserRestaurant } = require('../models')
 const { hashData } = require('../helpers/bcrypt')
 
 let userId = 0
+let user1_id = 0
+let user2_id = 0
+
+let restaurantId = 0
+let restaurantHistoryId1 = 0
+let restaurantHistoryId2 = 0
+let restaurantHistoryId3 = 0
+
 let hospitalId = 0
 let userHospitalId = 0
 let historyId = 0
@@ -13,6 +21,24 @@ let user_data = {
     nik: 123456,
     name: 'Kiko',
     email: 'kiko@yahoo.com',
+    status: 'Negative',
+    isEmailVerify: true
+}
+
+let userFriend1_data = {
+    phone: '+62822222222',
+    nik: 123456,
+    name: 'Ahmad',
+    email: 'Ahmad@yahoo.com',
+    status: 'Negative',
+    isEmailVerify: true
+}
+
+let userFriend2_data = {
+    phone: '+62833333333',
+    nik: 123456,
+    name: 'Akbar',
+    email: 'akbar@yahoo.com',
     status: 'Negative',
     isEmailVerify: true
 }
@@ -31,10 +57,32 @@ let userHospital_data = {
     isWaitingResult: true
 }
 
+let restaurant_data = {
+    name: '[DUMMY] The Coffee Bean Ciputra World',
+    email: 'coffee-bean.management@yahoo.com',
+    address: 'Ciputra World Mall, Surabaya, Jawa Timur'
+}
+
 beforeAll(async function(done) {
     try {
         let user = await User.create(user_data)
         userId = user.id
+        let user1 = await User.create(userFriend1_data)
+        user1_id = user1.id
+        let user2 = await User.create(userFriend2_data)
+        user2_id = user2.id
+
+        let restaurant = await Restaurant.create(restaurant_data)
+        restaurantId = restaurant.id
+        let userRestaurant = await UserRestaurant.bulkCreate([
+            { restaurantId, userId },
+            { restaurantId, userId: user1_id },
+            { restaurantId, userId: user2_id }
+        ], { returning: ['id']})
+        restaurantHistoryId1 = userRestaurant[0].dataValues.id
+        restaurantHistoryId2 = userRestaurant[1].dataValues.id
+        restaurantHistoryId3 = userRestaurant[2].dataValues.id
+
         let hospital = await Hospital.create(hospitalAdmin_data)
         hospitalId = hospital.id
         let userHospital = await UserHospital.create({
@@ -60,21 +108,15 @@ beforeAll(async function(done) {
 
 afterAll(async function(done) {
     try {
-        await User.destroy({
-            where: {
-                phone: '+62811111111'
-            } 
-        })
-        await UserHospital.destroy({
-            where: {
-                testingType: '[DUMMY]Swab'
-            } 
-        })
-        await Hospital.destroy({
-            where: {
-                name: '[DUMMY] RS Mitra Kerja'
-            } 
-        })
+        await User.destroy({ where: { phone: '+62811111111' }})
+        await User.destroy({ where: { phone: '+62822222222' }})
+        await User.destroy({ where: { phone: '+62833333333' }})
+        await UserHospital.destroy({ where: { testingType: '[DUMMY]Swab'}})
+        await Hospital.destroy({ where: { name: '[DUMMY] RS Mitra Kerja' }})
+        await Restaurant.destroy({ where: { name: '[DUMMY] The Coffee Bean Ciputra World' }})
+        await UserRestaurant.destroy({ where: { id: restaurantHistoryId1 }})
+        await UserRestaurant.destroy({ where: { id: restaurantHistoryId2 }})
+        await UserRestaurant.destroy({ where: { id: restaurantHistoryId3 }})
         done()
     } catch (err) {
         done(err)
@@ -254,7 +296,7 @@ describe('Get list of patients of specific hospital by its id / SUCCESS CASE', (
     })
 })
 
-describe('Update user history list of doing COVID-19 testing / Success Case', () => {
+describe('Update user history list of doing COVID-19 testing / SUCCESS CASE', () => {
     test('Update the testing result to NEGATIVE', (done) => {
         request(app)
             .put('/hospitals/update-status')
@@ -266,6 +308,38 @@ describe('Update user history list of doing COVID-19 testing / Success Case', ()
                 expect(res.status).toBe(200)
                 expect(res.body).toHaveProperty('message', 'Update Success..')
                 expect(res.body).toHaveProperty('message', expect.any(String))
+                done()
+            })
+    })
+    test('Update the testing result to POSITIVE', (done) => {
+        request(app)
+            .put('/hospitals/update-status')
+            .send({
+                userId, status: "Positive", hospitalId, historyId
+            })
+            .end(function(err, res) {
+                if(err) throw err
+                expect(res.status).toBe(200)
+                expect(res.body).toHaveProperty('message', 'Success Send Notification')
+                expect(res.body).toHaveProperty('message', expect.any(String))
+                expect(res.body).toHaveProperty('devId', expect.any(Array))
+                done()
+            })
+    })
+})
+
+describe('Update user history list of doing COVID-19 testing / ERROR CASE', () => {
+    test('Failed because front-end send the wrong body', (done) => {
+        const false_body = { status: "Positive", hospitalId, historyId }
+        request(app)
+            .put('/hospitals/update-status')
+            .send(false_body)
+            .end(function(err, res) {
+                const errors = ['Internal Server Error']
+                if(err) throw err
+                expect(res.status).toBe(500)
+                expect(res.body).toHaveProperty('errors', expect.any(Array))
+                expect(res.body.errors).toEqual(expect.arrayContaining(errors))
                 done()
             })
     })

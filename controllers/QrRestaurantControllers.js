@@ -29,8 +29,8 @@ class RestaurantController {
                 {
                     // console.log(src);
                     // RENDER TO REACT LATER
-                    // res.status(200).json({ restaurant_QR: src })
-                    res.render("scan", {src})
+                    res.status(200).json({ restaurant_QR: src })
+                    // res.render("scan", {src})
                 })
             }
         } catch(err) {
