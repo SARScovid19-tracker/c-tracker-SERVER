@@ -1,5 +1,6 @@
 const axios = require('axios')
 async function sendPushNotification(expoPushToken) {
+    console.log(expoPushToken, '<<<<<<<>>>>> masuk brooooo');
     const message = {
       to: expoPushToken,
       sound: 'default',
@@ -18,12 +19,14 @@ async function sendPushNotification(expoPushToken) {
           'Content-Type': 'application/json',}
     })
     .then( function(res) {
-        console.log(`RESP: ${res.data}`)
+        console.log(`RESP: ${res.data}`, '<<<<<>>>>> berhasil brooo')
+        res.status(200).json({ msg: "Expo push token works!" })
       })
       .catch( function(error){
         console.log(`ERR: ${error}`)
+        throw {name: 'INTERNAL_SERVER_ERROR'}
       })
   }
 
-// sendPushNotification('ExponentPushToken[noIv86Iv0kqMRacllB1h0q]') -> test to invoke notif
+// sendPushNotification('ExponentPushToken[noIv86Iv0kqMRacllB1h0q]') // -> test to invoke notif
   module.exports = sendPushNotification
