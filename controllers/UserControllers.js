@@ -131,7 +131,8 @@ class UserControllers {
                     nik: user.nik,
                     name: user.name,
                     deviceId,
-                    isEmailVerify: user.isEmailVerify
+                    isEmailVerify: user.isEmailVerify,
+                    status: user.status,
                 })
             }
         } catch(err) {

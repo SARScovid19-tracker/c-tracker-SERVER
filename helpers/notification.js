@@ -1,6 +1,5 @@
 const axios = require('axios')
 async function sendPushNotification(expoPushToken) {
-    console.log(expoPushToken, '<<<<<<<>>>>> masuk brooooo');
     const message = {
       to: expoPushToken,
       sound: 'default',
@@ -9,7 +8,11 @@ async function sendPushNotification(expoPushToken) {
       teridentifaksi positif Covid-19. JANGAN PANIK! Isolasi mandiri dan segera cek status kamu ke rumah sakit terdekat.`,
       data: { data: 'goes here' },
     };
-  
+    
+    // let expHost
+    // if(!url) expHost = 'https://exp.host/--/api/v2/push/send'
+    // else expHost = url
+
     await axios
     .post('https://exp.host/--/api/v2/push/send', message,
     {
@@ -19,13 +22,14 @@ async function sendPushNotification(expoPushToken) {
           'Content-Type': 'application/json',}
     })
     .then( function(res) {
-        console.log(`RESP: ${res.data}`, '<<<<<>>>>> berhasil brooo')
-        res.status(200).json({ msg: "Expo push token works!" })
+        console.log(`RESP: ${res}`, '<<<<<>>>>> berhasil brooo')
+        console.log(typeof res, '<<<<<>>>>> datatype nya')
+        return res
       })
-      .catch( function(error){
-        console.log(`ERR: ${error}`)
-        throw {name: 'INTERNAL_SERVER_ERROR'}
-      })
+    .catch( function(error){
+      console.log(`ERR: ${error}`)
+      // throw {name: 'INTERNAL_SERVER_ERROR'}
+    })
   }
 
 // sendPushNotification('ExponentPushToken[noIv86Iv0kqMRacllB1h0q]') // -> test to invoke notif
