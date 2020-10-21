@@ -27,8 +27,8 @@ class HospitalControllers {
                     // console.log(src);
 
                     // RENDER TO REACT LATER
-                    res.status(200).json({ hospital_QR: src })
-                    // res.render("scan", {src})
+                    // res.status(200).json({ hospital_QR: src })
+                    res.render("scan", {src, name: hospital.name})
                 })
             }
         } catch(err) {

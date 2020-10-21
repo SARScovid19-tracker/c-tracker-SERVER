@@ -4,7 +4,7 @@ async function sendPushNotification(expoPushToken) {
       to: expoPushToken,
       sound: 'default',
       title: 'Check Now!',
-      body: `Dear user, kamu terdeteksi berada di satu tempat yang sama dengan orang yang 
+      body: `Halo!, kamu terdeteksi berada di satu tempat yang sama dengan orang yang 
       teridentifaksi positif Covid-19. JANGAN PANIK! Isolasi mandiri dan segera cek status kamu ke rumah sakit terdekat.`,
       data: { data: 'goes here' },
     };
@@ -22,9 +22,18 @@ async function sendPushNotification(expoPushToken) {
           'Content-Type': 'application/json',}
     })
     .then( function(res) {
+<<<<<<< HEAD
         console.log(`RESP: ${res}`, '<<<<<>>>>> berhasil brooo')
         console.log(typeof res, '<<<<<>>>>> datatype nya')
         return res
+=======
+        console.log(`RESP: ${res.data}`)
+        return res.status(200).json({ msg: "Expo push token works!" })
+      })
+      .catch( function(error){
+        console.log(`ERR: ${error}`)
+        throw {name: 'INTERNAL_SERVER_ERROR'}
+>>>>>>> f87292649cd612b4676e2150fdb6cd4214f024cb
       })
     .catch( function(error){
       console.log(`ERR: ${error}`)

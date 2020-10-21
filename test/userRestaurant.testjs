@@ -65,7 +65,6 @@ describe('Get History Restaurant / SUCCESS CASE', () => {
             done()
         })
     })
-    
 })
 
 describe('Get History Restaurant / ERROR CASE', () => {
@@ -82,5 +81,4 @@ describe('Get History Restaurant / ERROR CASE', () => {
             done()
         })
     })
-    
 })
