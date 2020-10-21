@@ -38,6 +38,22 @@ describe('Save History Restaurant / Success Case', () => {
     })
 })
 
+describe('Save History Restaurant / ERROR CASE', () => {
+    test('should send and object with key message and addUserRestaurant', (done) => {
+        request(app)
+        .post('/history/restaurants')
+        .send({ restaurantId: ['Supposed to be not this data']})
+        .end(function(err, res) {
+            const errors = ['Internal Server Error']
+            if(err) throw err
+            expect(res.status).toBe(500)
+            expect(res.body).toHaveProperty('errors', expect.any(Array))
+            expect(res.body.errors).toEqual(expect.arrayContaining(errors))
+            done()
+        })
+    })
+})
+
 describe('Get History Restaurant / Success Case', () => {
     test('should send object with key history ', (done) => {
         request(app)
@@ -49,5 +65,20 @@ describe('Get History Restaurant / Success Case', () => {
             done()
         })
     })
-    
+})
+
+describe('Get History Restaurant / ERROR CASE', () => {
+    test('failed because of wrong routing', (done) => {
+        const false_restaurantId = ['false']
+        request(app)
+        .get(`/history/restaurants/${false_restaurantId}`)
+        .end(function(err, res) {
+            const errors = ['Internal Server Error']
+            if(err) throw err
+            expect(res.status).toBe(500)
+            expect(res.body).toHaveProperty('errors', expect.any(Array))
+            expect(res.body.errors).toEqual(expect.arrayContaining(errors))
+            done()
+        })
+    })
 })

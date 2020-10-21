@@ -4,7 +4,7 @@ async function sendPushNotification(expoPushToken) {
       to: expoPushToken,
       sound: 'default',
       title: 'Check Now!',
-      body: `Dear user, kamu terdeteksi berada di satu tempat yang sama dengan orang yang 
+      body: `Halo!, kamu terdeteksi berada di satu tempat yang sama dengan orang yang 
       teridentifaksi positif Covid-19. JANGAN PANIK! Isolasi mandiri dan segera cek status kamu ke rumah sakit terdekat.`,
       data: { data: 'goes here' },
     };
@@ -19,11 +19,13 @@ async function sendPushNotification(expoPushToken) {
     })
     .then( function(res) {
         console.log(`RESP: ${res.data}`)
+        return res.status(200).json({ msg: "Expo push token works!" })
       })
       .catch( function(error){
         console.log(`ERR: ${error}`)
+        throw {name: 'INTERNAL_SERVER_ERROR'}
       })
   }
 
-// sendPushNotification('ExponentPushToken[noIv86Iv0kqMRacllB1h0q]') -> test to invoke notif
+// sendPushNotification('ExponentPushToken[noIv86Iv0kqMRacllB1h0q]') // -> test to invoke notif
   module.exports = sendPushNotification

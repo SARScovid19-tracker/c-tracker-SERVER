@@ -27,7 +27,6 @@ class HospitalControllers {
                 }
             }
         } catch(err) {
-            console.log(err)
             next(err)
         }
     }
@@ -89,13 +88,14 @@ class HospitalControllers {
                 )
                 let devId = []
                 output[0].forEach(data => {
-                        devId.push(`ExponentPushToken[${data.User.name}]`)
+                    if(data.User.deviceId) {
+                        devId.push(data.User.name)
+                    }
                 })
+                sendPushNotification(devId)
                 res.status(200).json({message: 'Success Send Notification', devId})
-                return output
             }
         } catch(err) {
-            console.log(err)
             next(err)
         }
     }

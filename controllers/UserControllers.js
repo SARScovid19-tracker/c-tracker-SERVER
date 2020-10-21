@@ -4,10 +4,10 @@ const client = require('twilio')(config.accountSID, config.authToken)
 const {generateToken, verifyToken} = require('../helpers/jwt')
 const nodemailer = require('nodemailer')
 
-
 class UserControllers {
     static async register(req, res, next) {
         let {phone, nik, name, email} = req.body
+        const template = fs.readFileSync('../helpers/email-template.html')
         try {
             const uniqueValidationPhone = await User.findOne({where: {phone}})
             if(uniqueValidationPhone) {
@@ -33,11 +33,16 @@ class UserControllers {
                             pass: process.env.SENDER_PASSWORD
                         }
                     })
+                    let data = {
+                        token,
+                        phone
+                    }
                     let mailOptions = {
                         from: '"noreply"<library.jhon2@gmail.com>',
                         to: email,
                         subject: 'Account Activation Link',
-                        html: `
+                        html: 
+                        `
                             <h2><b>Please click on given link to activate your account</b></h2>
                             <p>${process.env.URL}authentication/activate?token=${token}</p>
                         `
@@ -131,7 +136,8 @@ class UserControllers {
                     nik: user.nik,
                     name: user.name,
                     deviceId: user.deviceId,
-                    isEmailVerify: user.isEmailVerify
+                    isEmailVerify: user.isEmailVerify,
+                    status: user.status
                 })
             }
         } catch(err) {

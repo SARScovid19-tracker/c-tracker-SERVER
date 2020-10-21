@@ -2,6 +2,8 @@ const request = require('supertest')
 const app = require('../app')
 const { User } = require('../models/')
 const {generateToken} = require('../helpers/jwt')
+const axios = require('axios')
+const sendPushNotification = require('../helpers/notification')
 
 let user_data = {
     phone: '+6212345678910',
@@ -32,7 +34,16 @@ afterAll((done) => {
 afterEach(() => { 
     jest.clearAllMocks(); 
     jest.resetAllMocks();
-  });
+});
+
+jest.mock('axios')
+
+test('should be able to send device token', () => {
+    const response = { msg: "Expo push token works!" }
+    axios.post.mockResolvedValue(response)
+    return sendPushNotification('ExponentPushToken[noIv86Iv0kqMRacllB1h0q]')
+        .then(({msg}) => expect(res.status).toBe(201))
+})
 
 describe('register / Success Case', () => {
     test('should send object with key message, name, and email', (done) => {
