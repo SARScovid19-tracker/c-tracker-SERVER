@@ -20,7 +20,7 @@ afterAll((done) => {
     .catch(err => done(err))
 })
 
-describe('Save History Restaurant / Success Case', () => {
+describe('Save History Restaurant / SUCCESS CASE', () => {
     test('should send and object with key message and addUserRestaurant', (done) => {
         request(app)
         .post('/history/restaurants')
@@ -54,7 +54,7 @@ describe('Save History Restaurant / ERROR CASE', () => {
     })
 })
 
-describe('Get History Restaurant / Success Case', () => {
+describe('Get History Restaurant / SUCCESS CASE', () => {
     test('should send object with key history ', (done) => {
         request(app)
         .get('/history/restaurants/89')

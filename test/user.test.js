@@ -19,6 +19,12 @@ let phone = {
     deviceId: 'ulalablabla12345'
 }
 
+let phone_verify = {
+    phone: '+62811371104',
+    code: 628217,
+    deviceId: 'blublub1234'
+}
+
 afterAll((done) => {
     User.destroy({
         where: {
@@ -172,6 +178,23 @@ describe('Login User / Success Case', () => {
                 if(err) throw err
                 expect(res.status).toBe(200)
                 expect(res.body).toHaveProperty('message', 'Send OTP success..')
+                done()
+            })
+    })
+})
+
+describe('Verify User / Success Case', () => {
+    test('should send object with key message', (done) => {
+        request(app)
+            .post('/verify')
+            .send(phone_verify)
+            .end((err, res) => {
+                if(err) throw err
+                expect(res.status).toBe(200)
+                expect(res.body).toHaveProperty('message', 'Thanks, Login Success!')
+                expect(res.body).toHaveProperty('deviceId', phone_verify.deviceId)
+                expect(res.body).toHaveProperty('token', expect.any(String))
+                expect(res.body).toHaveProperty('isEmailVerify', true)
                 done()
             })
     })

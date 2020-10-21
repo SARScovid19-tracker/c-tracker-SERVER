@@ -1,5 +1,6 @@
 const axios = require('axios')
 async function sendPushNotification(expoPushToken) {
+    console.log(expoPushToken, '<<<<<<<>>>>> masuk brooooo');
     const message = {
       to: expoPushToken,
       sound: 'default',
