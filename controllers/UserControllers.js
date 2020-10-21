@@ -135,15 +135,9 @@ class UserControllers {
                     phone,
                     nik: user.nik,
                     name: user.name,
-<<<<<<< HEAD
-                    deviceId,
-                    isEmailVerify: user.isEmailVerify,
-                    status: user.status,
-=======
                     deviceId: user.deviceId,
                     isEmailVerify: user.isEmailVerify,
                     status: user.status
->>>>>>> f87292649cd612b4676e2150fdb6cd4214f024cb
                 })
             }
         } catch(err) {
@@ -163,6 +157,16 @@ class UserControllers {
             res.status(200).json({message: 'Logout Success'})
         } catch(err) {
             console.log(err)
+            next(err)
+        }
+    }
+    static async getById(req, res, next) {
+        const { userId } = req.params
+        try {
+            const user = await User.findOne({ where: { id: userId }})
+            if(!user) throw {name: 'DATA_NOT_FOUND'}
+            res.status(200).json({ user })
+        } catch (err) {
             next(err)
         }
     }

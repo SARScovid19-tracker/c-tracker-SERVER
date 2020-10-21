@@ -6,5 +6,6 @@ router.patch('/login', UserControllers.login)
 router.post('/verify', UserControllers.verify)
 router.get(`/authentication/activate`, UserControllers.activateAccount)
 router.patch('/logout', UserControllers.logout)
+router.get('/user/:userId', UserControllers.getById)
 
 module.exports = router

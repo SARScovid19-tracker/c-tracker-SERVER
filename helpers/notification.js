@@ -22,18 +22,9 @@ async function sendPushNotification(expoPushToken) {
           'Content-Type': 'application/json',}
     })
     .then( function(res) {
-<<<<<<< HEAD
         console.log(`RESP: ${res}`, '<<<<<>>>>> berhasil brooo')
         console.log(typeof res, '<<<<<>>>>> datatype nya')
         return res
-=======
-        console.log(`RESP: ${res.data}`)
-        return res.status(200).json({ msg: "Expo push token works!" })
-      })
-      .catch( function(error){
-        console.log(`ERR: ${error}`)
-        throw {name: 'INTERNAL_SERVER_ERROR'}
->>>>>>> f87292649cd612b4676e2150fdb6cd4214f024cb
       })
     .catch( function(error){
       console.log(`ERR: ${error}`)
