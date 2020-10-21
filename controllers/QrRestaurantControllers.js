@@ -24,13 +24,12 @@ class RestaurantController {
                 //     address: restaurant.address
                 // })
                 const datas = (JSON.stringify(data))
-        
                 qr.toDataURL(datas, (err, src) =>
                 {
                     // console.log(src);
                     // RENDER TO REACT LATER
-                    res.status(200).json({ restaurant_QR: src })
-                    // res.render("scan", {src})
+                    // res.status(200).json({ restaurant_QR: src })
+                    res.render("scan", {src, name: restaurant.name})
                 })
             }
         } catch(err) {
