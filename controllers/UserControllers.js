@@ -3,11 +3,12 @@ const config = require('../otp/config')
 const client = require('twilio')(config.accountSID, config.authToken)
 const {generateToken, verifyToken} = require('../helpers/jwt')
 const nodemailer = require('nodemailer')
+const ejs = require('ejs')
 
 class UserControllers {
     static async register(req, res, next) {
+        console.log('masukk register')
         let {phone, nik, name, email} = req.body
-        const template = fs.readFileSync('../helpers/email-template.html')
         try {
             const uniqueValidationPhone = await User.findOne({where: {phone}})
             if(uniqueValidationPhone) {
@@ -33,29 +34,28 @@ class UserControllers {
                             pass: process.env.SENDER_PASSWORD
                         }
                     })
-                    let data = {
-                        token,
-                        phone
-                    }
-                    let mailOptions = {
-                        from: '"noreply"<library.jhon2@gmail.com>',
-                        to: email,
-                        subject: 'Account Activation Link',
-                        html: 
-                        `
-                            <h2><b>Please click on given link to activate your account</b></h2>
-                            <p>${process.env.URL}authentication/activate?token=${token}</p>
-                        `
-                    }
-                    transporter.sendMail(mailOptions, (err, info) => {
+                    ejs.renderFile(__dirname + "/../views/email-template.ejs", {token, name}, (err, data) => {
                         if(err) {
                             console.log(err)
                         } else {
-                            console.log(`Email sent to: ${email}` )
-                            res.status(201).json({
-                                message: 'Register new user success, Please check your email to activate your account',
-                                name: user.name,
-                                email: user.email
+                            let mailOptions = {
+                                from: '"noreply"<library.jhon2@gmail.com>',
+                                to: email,
+                                subject: 'Account Activation Link',
+                                html: data
+                            }
+                            transporter.sendMail(mailOptions, (err, info) => {
+                                if(err) {
+                                    console.log(err)
+                                    next(err)
+                                } else {
+                                    console.log(`Email sent to: ${email}` )
+                                    res.status(201).json({
+                                        message: 'Register new user success, Please check your email to activate your account',
+                                        name: user.name,
+                                        email: user.email
+                                    })
+                                }
                             })
                         }
                     })
@@ -75,7 +75,7 @@ class UserControllers {
                 email: decode.email
             }
         })
-        res.status(200).send('Activation account successfully, you can close this page')
+        res.status(200).render("active-email")
     }
     static async login(req, res, next) {
         let {phone} = req.body

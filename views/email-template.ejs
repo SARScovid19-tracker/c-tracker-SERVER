@@ -1,0 +1,69 @@
+<style type="text/css">
+    .header {
+      background: #8a8a8a;
+    }
+    .header .columns {
+      padding-bottom: 0;
+    }
+    .header p {
+      color: #fff;
+      padding-top: 15px;
+    }
+    .header .container {
+      background: white;
+    }
+    table {
+        border-spacing: 0;
+        color: #333333;
+        font-family: Arial, sans-serif;
+    }
+  </style>
+  
+  <wrapper class="header">
+    <container>
+      <row class="collapse">
+        <columns small="6">
+            <center>
+                <img src="https://image.freepik.com/free-vector/positive-people-facing-new-normal_23-2148623092.jpg">
+            </center>
+        </columns>
+      </row>
+    </container>
+  </wrapper>
+  
+  <container>
+  
+    <row>
+      <columns small="12" >
+        
+        <table class="one-column" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-spacing:0; border-left:1px solid #e8e7e5; border-right:1px solid #e8e7e5; border-bottom:1px solid #e8e7e5; padding: 10px" bg="#FFFFFF">
+          
+          <div width="200" height="100" align="center" style="-moz-border-radius: 30px; -webkit-border-radius: 30px; border-radius: 50%;">
+            <img src="https://media.discordapp.net/attachments/766205917695180881/768494072565727262/logo-pendek.png" width="300" style="padding-top:5px" alt="" border="0"/>
+          </div>
+          <tr>
+                <td align="center"><b><p style="color:#262626; font-size:32px; text-align:center; font-family: Verdana, Geneva, sans-serif; padding: 0%;">Hello <%= name %>!</p></b>
+          </tr>
+          <tr>
+              <td align="center"><p style="font-size: 20px; text-align: center; font-family: Verdana, Geneva, sans-serif">Thank You For Your Registering!
+                <br />Just one more step to join us to be part of the hero of COVID-19 prevention
+            </p></td>
+          </tr>
+          <tr>
+              <td align="center"><p>Click the button down below to activate your account</p></td>
+          </tr>
+          <tr style="margin-bottom: 20px">
+              <td align="center">
+                  <table border="0" cellpadding="0" cellspacing="0" style="Margin:0 auto;">
+                      <tr>
+                          <td width="200" height="60" align="center" bgcolor="#2f9780" style="-moz-border-radius: 30px; -webkit-border-radius: 30px; border-radius: 30px;">
+                              <a href="http://localhost:3000/authentication/activate?token=<%= token %>" style="width:200; display:block; text-decoration:none; border:0; text-align:center; font-weight:bold;font-size:20px; font-family: Arial, sans-serif; color: #ffffff" class="button_link">Activate Now!</a>
+                          </td>
+                      </tr>
+                  </table>
+              </td>
+          </tr> <br />
+        </table>
+      </columns>
+    </row>
+  </container>

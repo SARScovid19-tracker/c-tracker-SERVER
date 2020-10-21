@@ -89,10 +89,12 @@ class HospitalControllers {
                 let devId = []
                 output[0].forEach(data => {
                     if(data.User.deviceId) {
-                        devId.push(data.User.name)
+                        devId.push(data.User.deviceId)
                     }
                 })
-                sendPushNotification(devId)
+                if(devId.length !== 0) {
+                    sendPushNotification(devId)
+                }
                 res.status(200).json({message: 'Success Send Notification', devId})
             }
         } catch(err) {
