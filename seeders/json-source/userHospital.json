@@ -1,0 +1,57 @@
+[
+    {
+        "userId": 1,
+        "hospitalId": 1,
+        "testingType": "Swab",
+        "isWaitingResult": true,
+        "publishedAt": null
+    },
+    {
+        "userId": 2,
+        "hospitalId": 1,
+        "testingType": "Swab",
+        "isWaitingResult": false,
+        "publishedAt": "2020-10-20 20:14:30.532+07" 
+        
+    },
+    {
+        "userId": 3,
+        "hospitalId": 1,
+        "testingType": "Swab",
+        "isWaitingResult": false,
+        "publishedAt": "2020-10-21 20:14:30.532+07" 
+        
+    },
+    {
+        "userId": 4,
+        "hospitalId": 1,
+        "testingType": "Rapid",
+        "isWaitingResult": true,
+        "publishedAt": null 
+        
+    },
+    {
+        "userId": 2,
+        "hospitalId": 2,
+        "testingType": "Rapid",
+        "isWaitingResult": false,
+        "publishedAt": "2020-10-20 20:14:30.532+07" 
+        
+    },
+    {
+        "userId": 3,
+        "hospitalId": 3,
+        "testingType": "Swab",
+        "isWaitingResult": false,
+        "publishedAt": "2020-10-20 20:14:30.532+07" 
+        
+    },
+    {
+        "userId": 3,
+        "hospitalId": 2,
+        "testingType": "Rapid",
+        "isWaitingResult": false,
+        "publishedAt": "2020-10-20 20:14:30.532+07" 
+        
+    }
+]
